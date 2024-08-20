@@ -47,9 +47,11 @@ public final class LogginPage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <head>\n");
       out.write("        <meta charset=\"UTF-8\">\n");
       out.write("        <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n");
-      out.write("        <link href=\"../CSS/LoginPage.css\" rel=\"stylesheet\" type=\"text/css\"/>\n");
+      out.write("        <link href=\"FarmaciaWeb/CSS/style.css\" rel=\"stylesheet\" type=\"text/css\"/>\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css\" integrity=\"sha512-ZnR2wlLbSbr8/c9AgLg3jQPAattCUImNsae6NHYnS9KrIwRdcY9DxFotXhNAKIKbAXlRnujIqUWoXXwqyFOeIQ==\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" />\n");
       out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n");
+      out.write("        <link href=\"../CSS/LoginPage.css\" rel=\"stylesheet\" type=\"text/css\"/>\n");
+      out.write("        \n");
       out.write("    </head>\n");
       out.write("    ");
 String Mensaje = "";

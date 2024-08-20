@@ -19,6 +19,7 @@
             response.sendRedirect("../Vistas/Loggin.jsp");
         }*/
     %>
+    
     <body>
         <div class="container mt-5 border" style="border-radius: 15px">
             <div class="row">

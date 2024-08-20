@@ -22,7 +22,7 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
             <a class="navbar-brand" href="#">
-                <img src="../Imagenes/lo-removebg-preview.png" class="icon" width="60px" height="60px"/>
+                <img src="/FarmaciaWeb/Imagenes/lo-removebg-preview.png" class="icon" width="60px" height="60px"/>
                 Farmacia yasbel
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -149,8 +149,8 @@
                 </div>
                 <div class="col-md-4 text-black">
                     <h5>Redes Sociales</h5>
-                    <a href="#" class="text-black"> Facebook <i class="fa-brands fa-facebook"></i></a><br>
-                    <a href="#" class="text-black"> Instagram <i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="text-black"> Facebook <i class="bi bi-facebook"></i></a><br>
+                    <a href="#" class="text-black"> Instagram <i class="bi bi-instagram"></i></a>
                 </div>
             </div>
             <div class="col-md-4 text-black">

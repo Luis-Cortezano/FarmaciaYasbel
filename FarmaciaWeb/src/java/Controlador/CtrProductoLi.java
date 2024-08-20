@@ -64,11 +64,17 @@ public class CtrProductoLi extends HttpServlet {
         switch (accion) {
 
             case "home":
+               
                 request.setAttribute("categorias", categoria);
+                System.out.println("categoria " + categoria.size());
                 request.setAttribute("productos", productos);
+                System.out.println("producto " + productos.size());
+                System.out.println("tipo " + sesion.getAttribute("tipo"));
                 if (sesion.getAttribute("tipo") != null) {
                     if (sesion.getAttribute("tipo").equals("Administrador")) {
+                        System.out.println("entro en administador");
                         request.getRequestDispatcher("Vistas/HomePage.jsp").forward(request, response);
+                        //System.out.println("tipo : " + us.getTipo());
                     } else {
                         if (sesion.getAttribute("tipo").equals("Cliente")) {
                             request.getRequestDispatcher("Vistas/HomePage.jsp").forward(request, response);

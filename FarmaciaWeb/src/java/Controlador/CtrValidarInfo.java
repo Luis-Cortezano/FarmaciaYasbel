@@ -93,6 +93,7 @@ public class CtrValidarInfo extends HttpServlet {
             String usu = request.getParameter("txtusu");
             String pas = request.getParameter("txtpass");
             us = usudao.validar(usu, pas);
+            System.out.println("tipo : " + us.getTipo());
             if (us.getUsuario() != null) {
                 System.out.println("usuario: "+us.getUsuario());
                 System.out.println("contraseña: "+pas);

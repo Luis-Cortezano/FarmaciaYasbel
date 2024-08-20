@@ -51,7 +51,10 @@ public final class HomePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <title>Farma-online</title>\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\">\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css\">\n");
+      out.write("        <link href=\"../CSS/PQR.css\" rel=\"stylesheet\" type=\"text/css\"/>\n");
       out.write("        <link href=\"../CSS/style.css\" rel=\"stylesheet\" type=\"text/css\"/>\n");
+      out.write("\n");
+      out.write("        \n");
       out.write("        <script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\"></script>\n");
       out.write("        <script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js\"></script>\n");
       out.write("        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>\n");

@@ -20,55 +20,6 @@
         }*/
     %>
     <body>
-         <nav class="navbar navbar-expand-lg navbar-light navbar-custom bg-success">
-            <a class="navbar-brand" href="#">
-                <img src="images.png" alt="Pill Bottle Icon" class="icon" width="30" height="30"/>
-                Farma-online yasbel.com
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <form class="form-inline my-2 my-lg-0 mr-auto">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar productos..." aria-label="Search">
-                    <button class="btn-search my-2 my-sm-0" type="submit">
-                        <div class="original">BUSCAR</div>
-                        <div class="letters">
-                            <span>B</span>
-                            <span>U</span>
-                            <span>S</span>
-                            <span>C</span>
-                            <span>A</span>
-                            <span>R</span>
-                        </div>
-                    </button>
-                </form>
-
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link nav-text-white" href="#">
-                            <i class="bi bi-person"></i> Mi cuenta
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-text-white" href="#">
-                            <i class="bi bi-cart-check-fill"></i> Carrito
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle nav-text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="bi bi-bookmark"></i> Comprar por categorías
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Hogar</a>
-                            <a class="dropdown-item" href="#">Salud y Medicamentos</a>
-                            <a class="dropdown-item" href="#">Apartado de Bebes</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </nav>
         <div class="container mt-5 border" style="border-radius: 15px">
             <div class="row">
                 <div class="col-sm-4"></div>

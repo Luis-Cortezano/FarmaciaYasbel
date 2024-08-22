@@ -209,6 +209,7 @@ public class ProductoDAO {
             pstm = con.prepareStatement("select * from producto where Stock >0 and nombre like ?");
             pstm.setString(1, nombre);
             rs = pstm.executeQuery();
+            
             while (rs.next()) {
                 Producto p = new Producto();
                 p.setId(rs.getInt(1));

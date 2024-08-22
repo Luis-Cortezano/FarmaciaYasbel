@@ -15,7 +15,7 @@ import java.sql.Connection;
 public class Conectar {
     
     private String driver ="com.mysql.jdbc.Driver";
-    private String CadenaConeccion = "jdbc:mysql://localhost/software_farmacia";
+    private String CadenaConeccion = "jdbc:mysql://localhost/software";
     private String usuario = "root";
     private String contrasena="";
     public Connection con;

@@ -19,9 +19,14 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="/FarmaciaWeb/JS/scripts.js" type="text/javascript"></script>
     </head>
+   <%
+        if (session.getAttribute("log") == null || session.getAttribute("log").equals('0')){
+            response.sendRedirect("../Vistas/Loggin.jsp");
+        }
+    %>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/FarmaciaWeb/CtrProductoLi?accion=home">
                 <img src="/FarmaciaWeb/Imagenes/lo-removebg-preview.png" class="icon" width="60px" height="60px"/>
                 Farmacia yasbel
             </a>
@@ -30,8 +35,8 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
-                <form class="form-inline my-2 my-lg-0 mr-auto">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar productos..." aria-label="Search">
+                <form class="form-inline my-2 my-lg-0 mr-auto" action="/FarmaciaWeb/CtrProductoLi?accion=buscar" method="post">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar productos..." aria-label="Search" name="busqueda">
                     <button class="btn-search my-2 my-sm-0" type="submit">
                         <div class="original">BUSCAR</div>
                         <div class="letters">
@@ -51,9 +56,12 @@
                             <i class="bi bi-person"></i> Mi Cuenta
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item text-center" href="#"><i class="bi bi-person"></i></a>
+                            <a class="dropdown-item " >${usuario.getNombre()}</a>
+                            <a class="dropdown-item " >${usuario.getTipo()}</a>
                             <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#exampleModal">PQR</a>
-                            <a class="dropdown-item text-danger" href="#">Cerrar Sesion</a>
-                            <a class="dropdown-item text-danger" href="/FarmaciaWeb/CtrProductoLi?accion=home">Sesion</a>
+                            <a class="dropdown-item text-danger" href="/FarmaciaWeb/CtrProductoLi?accion=salir">Cerrar Sesion</a>
+                            
                         </div>
                     </li>
                     <li class="nav-item">
@@ -65,12 +73,15 @@
                         <a class="nav-link dropdown-toggle nav-text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="bi bi-bookmark"></i> Comprar por categorías
                         </a>
-                        <c:forEach var="cat" items="${categoria}">
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/FarmaciaWeb/CtrProductoLi?accion=buscarcat&catid=${cat.getId()}"><i class="bi bi-bookmarks"></i>${cat.getNombre()}</a>
-                            <input type="hidden" value="${cat.getId()}" name="catid" id="catid">
-                        </div>
-                        </c:forEach>
+
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <c:forEach var="c" items="${categorias}">
+                                <input type="hidden" value="${c.getId()}" name="catid" id="catid">
+                                <li><a class="dropdown-item" href="/FarmaciaWeb/CtrProductoLi?accion=buscarcat&catid=${c.getId()}" ><i class="bi bi-bookmarks"></i> ${c.getNombre()}</a></li>
+                                
+                            </c:forEach>
+                        </ul>
+
                     </li>
                 </ul>
             </div>
@@ -83,34 +94,20 @@
         <div class="offer-banner">
             <p class="offer-text">Ofertas con el 30% de descuento</p>
         </div>
-        
-            <div id="carouselExampleIndicators" class="carousel slide">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="..." class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="..." class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="..." class="d-block w-100" alt="...">
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        
+
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="..." class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="..." class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="..." class="d-block w-100" alt="...">
+    </div>
+  </div>
+</div>
         <br>
         <section id="productos" class="product-container">
             <c:forEach var="prod" items="${productos}">

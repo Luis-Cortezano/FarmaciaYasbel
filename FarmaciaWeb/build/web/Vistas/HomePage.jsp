@@ -65,11 +65,12 @@
                         <a class="nav-link dropdown-toggle nav-text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="bi bi-bookmark"></i> Comprar por categorías
                         </a>
+                        <c:forEach var="cat" items="${categoria}">
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Hogar</a>
-                            <a class="dropdown-item" href="#">Salud y Medicamentos</a>
-                            <a class="dropdown-item" href="#">Apartado de Bebes</a>
+                            <a class="dropdown-item" href="/FarmaciaWeb/CtrProductoLi?accion=buscarcat&catid=${cat.getId()}"><i class="bi bi-bookmarks"></i>${cat.getNombre()}</a>
+                            <input type="hidden" value="${cat.getId()}" name="catid" id="catid">
                         </div>
+                        </c:forEach>
                     </li>
                 </ul>
             </div>

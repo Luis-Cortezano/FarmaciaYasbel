@@ -86,6 +86,17 @@ public class CtrProductoLi extends HttpServlet {
                 }
 
                 break;
+            case "buscarcat":
+                int idcat =Integer.parseInt(request.getParameter("catid"));
+                productos = pdao.buscarcat(idcat);
+                request.setAttribute("categorias", categoria);
+                request.setAttribute("productos", productos);
+                System.out.println("productos" + productos);
+                System.out.println("categorias : " + categoria);
+                if (sesion.getAttribute("tipo").equals("Administrador")){
+                    request.getRequestDispatcher("Vistas/VentasAdmin.jsp").forward(request, response);
+                }
+                break;
         }
     }
 

@@ -86,6 +86,33 @@ public class CtrProductoLi extends HttpServlet {
                 }
 
                 break;
+            case "buscarcat":
+                int idcat =Integer.parseInt(request.getParameter("catid"));
+                productos = pdao.buscarcat(idcat);
+                request.setAttribute("categorias", categoria);
+                request.setAttribute("productos", productos);
+               
+                if (sesion.getAttribute("tipo").equals("Administrador")){
+                    request.getRequestDispatcher("Vistas/HomePage.jsp").forward(request, response);
+                }
+                break;
+            case "buscar":
+                String nombre =request.getParameter("busqueda");
+                productos = pdao.buscar(nombre);
+                request.setAttribute("categorias", categoria);
+                request.setAttribute("productos", productos);
+                if (sesion.getAttribute("tipo").equals("Administrador")){
+                    request.getRequestDispatcher("Vistas/HomePage.jsp").forward(request, response);
+                }
+                if (request.getParameter("busqueda") == null) {
+                    response.sendRedirect("/FarmaciaWeb/Vistas/HomePage.jsp?busqued=0");
+                }
+                break;
+            case "salir":
+                //HttpSession sesion = request.getSession();
+                sesion.invalidate();
+                response.sendRedirect("/FarmaciaWeb/Vistas/LogginPage.jsp");
+                break;
         }
     }
 

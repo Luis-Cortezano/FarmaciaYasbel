@@ -36,13 +36,7 @@
                     </button>
                 </div>
                 <nav class="nav">
-                    <a href="#" class="nav-link active">
-                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
-                            <circle cx="12" cy="7" r="4"/>
-                        </svg>
-                        Mi cuenta
-                    </a>
+                    
                     <!-- Collapsible Section -->
                     <div class="collapsible">
                         <button class="collapsible-trigger">
@@ -53,7 +47,7 @@
                         </button>
                         <div class="collapsible-content">
                             <a href="#" class="collapsible-link">Droguería</a>
-                            <a href="#" class="collapsible-link submenu-btn">Inventario</a>
+                            <a href="IndexAdmin.jsp" class="collapsible-link submenu-btn">Inventario</a>
                             <a href="GestionPedidoAdm.jsp" class="collapsible-link submenu-btn">Procesamiento de Pedidos</a>
                             <a href="#" class="collapsible-link submenu-btn">Gestión de Clientes</a>
                             <a href="ListarProductoAdm.jsp" class="collapsible-link submenu-btn">Gestion de Productos</a>
@@ -89,9 +83,6 @@
                         <div class="user-menu-content">
                             <div class="user-menu-label">Mi Cuenta</div>
                             <div class="user-menu-separator"></div>
-                            <a href="#" class="user-menu-item">Configuración</a>
-                            <a href="#" class="user-menu-item">Soporte</a>
-                            <div class="user-menu-separator"></div>
                             <a href="#" class="user-menu-item">Cerrar sesión</a>
                         </div>
                     </div>
@@ -104,16 +95,16 @@
                                 <tr>
                                     <th>Producto</th>
                                     <th>Disponibilidad</th>
-                                    <th>Precio</th>
-                                    <th>Acciones</th>
+                                    <th>Vendidos</th>
+                                    <th>Estado</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>Paracetamol</td>
+                                    <td>50</td>
+                                    <td>12</td>
                                     <td>En stock</td>
-                                    <td>$10.00</td>
-                                    <td><button class="btn btn-primary">Editar</button></td>
                                 </tr>
                                 <!-- Más filas aquí -->
                             </tbody>

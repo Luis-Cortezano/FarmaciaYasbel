@@ -43,14 +43,7 @@
                         </button>
                     </div>
                     <nav class="nav">
-                        <a href="#" class="nav-link active">
-                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
-                            <circle cx="12" cy="7" r="4"/>
-                            </svg>
-                            Mi cuenta
-                        </a>
-                        <!-- Collapsible Section -->
+                       
                         <div class="collapsible">
                             <button class="collapsible-trigger">
                                 Gestión de Productos
@@ -60,10 +53,10 @@
                             </button>
                             <div class="collapsible-content">
                                 <a href="#" class="collapsible-link">Droguería</a>
-                                <a href="#" class="collapsible-link submenu-btn">Inventario</a>
+                                <a href="IndexAdmin.jsp" class="collapsible-link submenu-btn">Inventario</a>
                                 <a href="GestionPedidoAdm.jsp" class="collapsible-link submenu-btn">Procesamiento de Pedidos</a>
                                 <a href="#" class="collapsible-link submenu-btn">Gestión de Clientes</a>
-                                <a href="#" class="collapsible-link submenu-btn">Gestion de Productos</a>
+                                <a href="ListarProductoAdm.jsp" class="collapsible-link submenu-btn">Gestion de Productos</a>
                                 <a href="#" class="collapsible-link submenu-btn">Sistema de Pagos y Facturación</a>
                                 <a href="#" class="collapsible-link submenu-btn">Análisis y Estadísticas</a>
                                 <a href="#" class="collapsible-link submenu-btn">Productos Disponibles</a>
@@ -96,10 +89,8 @@
                             <div class="user-menu-content">
                                 <div class="user-menu-label">Mi Cuenta</div>
                                 <div class="user-menu-separator"></div>
-                                <a href="#" class="user-menu-item">Configuración</a>
-                                <a href="#" class="user-menu-item">Soporte</a>
-                                <div class="user-menu-separator"></div>
                                 <a href="#" class="user-menu-item">Cerrar sesión</a>
+                                
                             </div>
                         </div>
                     </header>
@@ -147,7 +138,7 @@
                                         <td class="border">${pro.getCategoria()}</td>
                                         <td scope="col" class ="text-center border">
                                             <input type="hidden" name="id" id="id" value="${pro.getId()}">
-                                            <a class="btn btn-warning" href="/AppWeb/CtrProducto?accion=EditarPro&idpro=${pro.getId()}"><i class="bi bi-pencil-fill"></i></a>
+                                            <a class="btn btn-warning" href="/AppWeb/CtrProducto?accion=EditarPro&idpro=${pro.getId()}" data-bs-toggle="modal" data-bs-target="#editarproducto"><i class="bi bi-pencil-fill"></i></a>
                                             <a class="btn btn-danger" id="btneliminar" href="#"><i class="bi bi-trash-fill"></i></a>
                                         </td>
                                     </tr>

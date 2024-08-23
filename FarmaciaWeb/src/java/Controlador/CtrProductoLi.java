@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import Modelo.Carrito;
 import Modelo.CategoriaDAO;
 import Modelo.Producto;
 import Modelo.ProductoDAO;
@@ -40,9 +41,10 @@ public class CtrProductoLi extends HttpServlet {
     CategoriaDAO cdao = new CategoriaDAO();
     List<Producto> productos = new ArrayList();
     List<CategoriaDAO> categoria = new ArrayList();
-    //List<Carrito>listacarrito = new ArrayList();
+    List<Carrito> listacarrito = new ArrayList();
     Usuario us;
     int cantidad;
+    Carrito car;
     int idp;
     int subtotal;
     int item;
@@ -60,11 +62,11 @@ public class CtrProductoLi extends HttpServlet {
         categoria = cdao.listar();
         System.out.println("producto " + productos.get(0).getFoto());
         Producto p = new Producto();
-        //request.setAttribute("contador", listacarrito.size());
+        request.setAttribute("contador", listacarrito.size());
         switch (accion) {
 
             case "home":
-               
+
                 request.setAttribute("categorias", categoria);
                 System.out.println("categoria " + categoria.size());
                 request.setAttribute("productos", productos);
@@ -87,21 +89,21 @@ public class CtrProductoLi extends HttpServlet {
 
                 break;
             case "buscarcat":
-                int idcat =Integer.parseInt(request.getParameter("catid"));
+                int idcat = Integer.parseInt(request.getParameter("catid"));
                 productos = pdao.buscarcat(idcat);
                 request.setAttribute("categorias", categoria);
                 request.setAttribute("productos", productos);
-               
-                if (sesion.getAttribute("tipo").equals("Administrador")){
+
+                if (sesion.getAttribute("tipo").equals("Administrador")) {
                     request.getRequestDispatcher("Vistas/HomePage.jsp").forward(request, response);
                 }
                 break;
             case "buscar":
-                String nombre =request.getParameter("busqueda");
+                String nombre = request.getParameter("busqueda");
                 productos = pdao.buscar(nombre);
                 request.setAttribute("categorias", categoria);
                 request.setAttribute("productos", productos);
-                if (sesion.getAttribute("tipo").equals("Administrador")){
+                if (sesion.getAttribute("tipo").equals("Administrador")) {
                     request.getRequestDispatcher("Vistas/HomePage.jsp").forward(request, response);
                 }
                 if (request.getParameter("busqueda") == null) {
@@ -109,9 +111,107 @@ public class CtrProductoLi extends HttpServlet {
                 }
                 break;
             case "salir":
-                //HttpSession sesion = request.getSession();
+              
                 sesion.invalidate();
                 response.sendRedirect("/FarmaciaWeb/Vistas/LogginPage.jsp");
+                break;
+            case "AgregarCarrito":
+                cantidad = 1;
+                int pos = 0;
+
+                idp = Integer.parseInt(request.getParameter("id"));
+                p = pdao.listarid(idp);
+                if (listacarrito.size() > 0) {
+                    for (int i = 0; i < listacarrito.size(); i++) {
+                        if (idp == listacarrito.get(i).getIdproducto()) {
+                            pos = i;
+                        }
+                    }
+                    if (idp == listacarrito.get(pos).getIdproducto()) {
+                        cantidad = cantidad + listacarrito.get(pos).getCantidad();
+                        subtotal = cantidad * listacarrito.get(pos).getPreciocompra();
+                        listacarrito.get(pos).setCantidad(cantidad);
+                        listacarrito.get(pos).setSubtotal(subtotal);
+                    } else {
+                        item++;
+                        car = new Carrito();
+                        car.setItem(item);
+                        car.setIdproducto(idp);
+                        car.setNombre(p.getNombre());
+                        car.setDescripcion(p.getDescripcion());
+                        car.setFoto(p.getFoto());
+                        car.setPreciocompra(p.getPrecio());
+                        car.setCantidad(cantidad);
+                        car.setSubtotal(cantidad * p.getPrecio());
+                        listacarrito.add(car);
+                    }
+                } else {
+                    item++;
+                    car = new Carrito();
+                    car.setItem(item);
+                    car.setIdproducto(idp);
+                    car.setNombre(p.getNombre());
+                    car.setDescripcion(p.getDescripcion());
+                    car.setFoto(p.getFoto());
+                    car.setPreciocompra(p.getPrecio());
+                    car.setCantidad(cantidad);
+                    car.setSubtotal(cantidad * p.getPrecio());
+                    listacarrito.add(car);
+                }
+                request.setAttribute("contador", listacarrito.size());
+                request.getRequestDispatcher("CtrProductoLi?accion=home").forward(request, response);
+                break;
+            case "Carrito":
+                totalpagar = 0;
+                for (int i = 0; i < listacarrito.size(); i++) {
+                    totalpagar = totalpagar + listacarrito.get(i).getSubtotal();
+                }
+                request.setAttribute("totalpagar", totalpagar);
+                request.setAttribute("carrito", listacarrito);
+                if (sesion.getAttribute("tipo").equals("Administrador")) {
+                    request.getRequestDispatcher("Vistas/CarritoAdmin.jsp").forward(request, response);
+                } else if (sesion.getAttribute("tipo").equals("Cliente")) {
+                    request.getRequestDispatcher("Vistas/CarritoCliente.jsp").forward(request, response);
+                }
+                break;
+            case "Comprar":
+                totalpagar = 0;
+                idp = Integer.parseInt(request.getParameter("id"));
+                p = pdao.listarid(idp);
+                item++;
+                car = new Carrito();
+                car.setItem(item);
+                car.setIdproducto(idp);
+                car.setNombre(p.getNombre());
+                car.setDescripcion(p.getDescripcion());
+                car.setFoto(p.getFoto());
+                car.setPreciocompra(p.getPrecio());
+                car.setCantidad(cantidad);
+                car.setSubtotal(cantidad * p.getPrecio());
+                boolean producto = false;
+                int con = 0;
+                for (int i = 0; i < listacarrito.size(); i++) {
+                    if (listacarrito.get(i).getIdproducto() == idp) {
+                        producto = true;
+                        con = i;
+                    }
+                    totalpagar = totalpagar + listacarrito.get(i).getSubtotal();
+                }
+                if (producto == false) {
+                    listacarrito.add(car);
+                    totalpagar = totalpagar + listacarrito.get(listacarrito.size() - 1).getSubtotal();
+                } else {
+                    listacarrito.get(con).setCantidad(listacarrito.get(con).getCantidad() + 1);
+                    listacarrito.get(con).setSubtotal(listacarrito.get(con).getPreciocompra() * listacarrito.get(con).getCantidad());
+                    int can = listacarrito.get(con).getCantidad();
+                    totalpagar = totalpagar + (listacarrito.get(con).getPreciocompra() * (can - 1));
+                }
+                request.setAttribute("contador", listacarrito.size());
+                request.setAttribute("totalpagar", totalpagar);
+                request.setAttribute("carrito", listacarrito);
+                if (sesion.getAttribute("tipo").equals("Administrador")) {
+                    request.getRequestDispatcher("Vistas/CarritoAdmin.jsp").forward(request, response);
+                }
                 break;
         }
     }

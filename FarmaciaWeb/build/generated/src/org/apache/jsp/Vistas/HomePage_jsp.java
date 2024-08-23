@@ -68,9 +68,16 @@ public final class HomePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>\r\n");
       out.write("        <script src=\"/FarmaciaWeb/JS/scripts.js\" type=\"text/javascript\"></script>\r\n");
       out.write("    </head>\r\n");
+      out.write("    ");
+
+        if (session.getAttribute("log") == null || session.getAttribute("log").equals('0')) {
+            response.sendRedirect("../Vistas/LogginPage.jsp");
+        }
+    
+      out.write("\r\n");
       out.write("    <body>\r\n");
       out.write("        <nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">\r\n");
-      out.write("            <a class=\"navbar-brand\" href=\"#\">\r\n");
+      out.write("            <a class=\"navbar-brand\" href=\"/FarmaciaWeb/CtrProductoLi?accion=home\">\r\n");
       out.write("                <img src=\"/FarmaciaWeb/Imagenes/lo-removebg-preview.png\" class=\"icon\" width=\"60px\" height=\"60px\"/>\r\n");
       out.write("                Farmacia yasbel\r\n");
       out.write("            </a>\r\n");
@@ -79,8 +86,8 @@ public final class HomePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            </button>\r\n");
       out.write("\r\n");
       out.write("            <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\r\n");
-      out.write("                <form class=\"form-inline my-2 my-lg-0 mr-auto\">\r\n");
-      out.write("                    <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Buscar productos...\" aria-label=\"Search\">\r\n");
+      out.write("                <form class=\"form-inline my-2 my-lg-0 mr-auto\" action=\"/FarmaciaWeb/CtrProductoLi?accion=buscar\" method=\"post\">\r\n");
+      out.write("                    <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Buscar productos...\" aria-label=\"Search\" name=\"busqueda\">\r\n");
       out.write("                    <button class=\"btn-search my-2 my-sm-0\" type=\"submit\">\r\n");
       out.write("                        <div class=\"original\">BUSCAR</div>\r\n");
       out.write("                        <div class=\"letters\">\r\n");
@@ -100,23 +107,37 @@ public final class HomePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <i class=\"bi bi-person\"></i> Mi Cuenta\r\n");
       out.write("                        </a>\r\n");
       out.write("                        <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\r\n");
+      out.write("                            <a class=\"dropdown-item text-center\" href=\"#\"><i class=\"bi bi-person\"></i></a>\r\n");
+      out.write("                            <a class=\"dropdown-item \" >");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${usuario.getNombre()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</a>\r\n");
+      out.write("                            <a class=\"dropdown-item \" >");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${usuario.getTipo()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</a>\r\n");
       out.write("                            <a class=\"dropdown-item\"  data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">PQR</a>\r\n");
-      out.write("                            <a class=\"dropdown-item text-danger\" href=\"#\">Cerrar Sesion</a>\r\n");
-      out.write("                            <a class=\"dropdown-item text-danger\" href=\"/FarmaciaWeb/CtrProductoLi?accion=home\">Sesion</a>\r\n");
+      out.write("                            <a class=\"dropdown-item text-danger\" href=\"/FarmaciaWeb/CtrProductoLi?accion=salir\">Cerrar Sesion</a>\r\n");
+      out.write("\r\n");
       out.write("                        </div>\r\n");
       out.write("                    </li>\r\n");
       out.write("                    <li class=\"nav-item\">\r\n");
       out.write("                        <a class=\"nav-link nav-text-white\" href=\"#\">\r\n");
       out.write("                            <i class=\"bi bi-cart-check-fill\"></i> Carrito\r\n");
+      out.write("                            (<label style=\"color: darkorange\">");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${contador}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</label>)\r\n");
       out.write("                        </a>\r\n");
       out.write("                    </li>\r\n");
       out.write("                    <li class=\"nav-item dropdown\">\r\n");
       out.write("                        <a class=\"nav-link dropdown-toggle nav-text-white\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n");
       out.write("                            <i class=\"bi bi-bookmark\"></i> Comprar por categorías\r\n");
       out.write("                        </a>\r\n");
-      out.write("                        ");
+      out.write("\r\n");
+      out.write("                        <ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\r\n");
+      out.write("                            ");
       if (_jspx_meth_c_forEach_0(_jspx_page_context))
         return;
+      out.write("\r\n");
+      out.write("                        </ul>\r\n");
       out.write("\r\n");
       out.write("                    </li>\r\n");
       out.write("                </ul>\r\n");
@@ -130,42 +151,19 @@ public final class HomePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <div class=\"offer-banner\">\r\n");
       out.write("            <p class=\"offer-text\">Ofertas con el 30% de descuento</p>\r\n");
       out.write("        </div>\r\n");
-      out.write("        \r\n");
-      out.write("            <div id=\"carouselExampleIndicators\" class=\"carousel slide\">\r\n");
-      out.write("                <div class=\"carousel-indicators\">\r\n");
-      out.write("                    <button type=\"button\" data-bs-target=\"#carouselExampleIndicators\" data-bs-slide-to=\"0\" class=\"active\" aria-current=\"true\" aria-label=\"Slide 1\"></button>\r\n");
-      out.write("                    <button type=\"button\" data-bs-target=\"#carouselExampleIndicators\" data-bs-slide-to=\"1\" aria-label=\"Slide 2\"></button>\r\n");
-      out.write("                    <button type=\"button\" data-bs-target=\"#carouselExampleIndicators\" data-bs-slide-to=\"2\" aria-label=\"Slide 3\"></button>\r\n");
-      out.write("                </div>\r\n");
-      out.write("                <div class=\"carousel-inner\">\r\n");
-      out.write("                    <div class=\"carousel-item active\">\r\n");
-      out.write("                        <img src=\"...\" class=\"d-block w-100\" alt=\"...\">\r\n");
-      out.write("                    </div>\r\n");
-      out.write("                    <div class=\"carousel-item\">\r\n");
-      out.write("                        <img src=\"...\" class=\"d-block w-100\" alt=\"...\">\r\n");
-      out.write("                    </div>\r\n");
-      out.write("                    <div class=\"carousel-item\">\r\n");
-      out.write("                        <img src=\"...\" class=\"d-block w-100\" alt=\"...\">\r\n");
-      out.write("                    </div>\r\n");
-      out.write("                </div>\r\n");
-      out.write("                <button class=\"carousel-control-prev\" type=\"button\" data-bs-target=\"#carouselExampleIndicators\" data-bs-slide=\"prev\">\r\n");
-      out.write("                    <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\r\n");
-      out.write("                    <span class=\"visually-hidden\">Previous</span>\r\n");
-      out.write("                </button>\r\n");
-      out.write("                <button class=\"carousel-control-next\" type=\"button\" data-bs-target=\"#carouselExampleIndicators\" data-bs-slide=\"next\">\r\n");
-      out.write("                    <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>\r\n");
-      out.write("                    <span class=\"visually-hidden\">Next</span>\r\n");
-      out.write("                </button>\r\n");
-      out.write("            </div>\r\n");
-      out.write("        \r\n");
+      out.write("\r\n");
       out.write("        <br>\r\n");
       out.write("        <section id=\"productos\" class=\"product-container\">\r\n");
-      out.write("            ");
+      out.write("            <div class=\"container\">\r\n");
+      out.write("                <div class=\"row\">\r\n");
+      out.write("                    ");
       if (_jspx_meth_c_forEach_1(_jspx_page_context))
         return;
       out.write("\r\n");
+      out.write("                </div>\r\n");
+      out.write("            </div>\r\n");
       out.write("\r\n");
-      out.write("            <!-- Add more cards here -->\r\n");
+      out.write("\r\n");
       out.write("\r\n");
       out.write("        </section>\r\n");
       out.write("    </main>\r\n");
@@ -276,7 +274,7 @@ public final class HomePage_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
     _jspx_th_c_forEach_0.setParent(null);
-    _jspx_th_c_forEach_0.setVar("cat");
+    _jspx_th_c_forEach_0.setVar("c");
     _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${categorias}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
     try {
@@ -284,15 +282,16 @@ public final class HomePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
           out.write("\r\n");
-          out.write("                        <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\r\n");
-          out.write("                            <a class=\"dropdown-item\" href=\"/AppWeb/CtrProducto?accion=buscarcat&catid=");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${cat.getId()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("\"></a>\r\n");
-          out.write("                            <input type=\"hidden\" value=\"");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${cat.getId()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("                                <input type=\"hidden\" value=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${c.getId()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("\" name=\"catid\" id=\"catid\">\r\n");
-          out.write("                        </div>\r\n");
-          out.write("                        ");
+          out.write("                                <li><a class=\"dropdown-item\" href=\"/FarmaciaWeb/CtrProductoLi?accion=buscarcat&catid=");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${c.getId()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" ><i class=\"bi bi-bookmarks\"></i> ");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${c.getNombre()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</a></li>\r\n");
+          out.write("\r\n");
+          out.write("                            ");
           int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
             break;
@@ -328,29 +327,33 @@ public final class HomePage_jsp extends org.apache.jasper.runtime.HttpJspBase
       if (_jspx_eval_c_forEach_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
           out.write("\r\n");
-          out.write("                <div class=\"card\">\r\n");
-          out.write("\r\n");
-          out.write("\r\n");
-          out.write("                    <img src=\"");
+          out.write("                        <div class=\"col-md-4 col-sm-6 mb-4\">\r\n");
+          out.write("                            <div class=\"card h-100\">\r\n");
+          out.write("                                <img src=\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getFoto()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("\" alt=\"Descripción de la imagen\" width=\"200\" height=\"200\">\r\n");
-          out.write("                    <div class=\"card-info\">\r\n");
-          out.write("                        <p class=\"text-title\">");
+          out.write("\" class=\"card-img-top\" alt=\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getNombre()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</p>\r\n");
-          out.write("                        <p class=\"text-body\">");
+          out.write("\">\r\n");
+          out.write("                                <div class=\"card-body d-flex flex-column\">\r\n");
+          out.write("                                    <h5 class=\"card-title\">");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getNombre()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</h5>\r\n");
+          out.write("                                    <p class=\"card-text\">");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getDescripcion()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</p>\r\n");
-          out.write("                    </div>\r\n");
-          out.write("                    <div class=\"card-footer\">\r\n");
-          out.write("                        <span class=\"text-title\">");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getPrecio()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</span>\r\n");
-          out.write("\r\n");
-          out.write("\r\n");
-          out.write("                    </div>\r\n");
-          out.write("                </div>\r\n");
-          out.write("            ");
+          out.write("                                    <!-- Botones alineados en la parte inferior -->\r\n");
+          out.write("                                    <div class=\"mt-auto\">\r\n");
+          out.write("                                        <a href=\"/FarmaciaWeb/CtrProductoLi?accion=comprar&id=");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getId()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" class=\"btn btn-secondary ml-2\">Carrito</a>\r\n");
+          out.write("                                        <a href=\"/FarmaciaWeb/CtrProductoLi?accion=AgregarCarrito&id=");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getId()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" class=\"btn btn-primary\">Agregar al carrito</a>\r\n");
+          out.write("                                    </div>\r\n");
+          out.write("                                </div>\r\n");
+          out.write("                            </div>\r\n");
+          out.write("                        </div>\r\n");
+          out.write("                    ");
           int evalDoAfterBody = _jspx_th_c_forEach_1.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
             break;

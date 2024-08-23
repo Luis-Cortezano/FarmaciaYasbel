@@ -10,103 +10,104 @@ package Modelo;
  * @author SENA
  */
 public class Usuario {
-    String id;
-    String nombre;
-    String apellido;
-    String direccion;
-    String telefono;
-    String correo;
-    String usuario;
-    String contrasena;
-    String tipo;
+
+    private String usuid;
+    private String usunombre;
+    private String usuapellido;
+    private String usudireccion;
+    private String usutelefono;
+    private String usucorreo;
+    private String usuusuario;
+    private String usucontrasena;
+    private String usutipo;
 
     public Usuario() {
     }
 
-    public Usuario(String id, String nombre, String apellido, String direccion, String telefono, String correo, String usuario, String contrasena, String tipo) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.correo = correo;
-        this.usuario = usuario;
-        this.contrasena = contrasena;
-        this.tipo = tipo;
+    public Usuario(String usuid, String usunombre, String usuapellido, String usudireccion, String usutelefono, String usucorreo, String usuusuario, String usucontrasena, String usutipo) {
+        this.usuid = usuid;
+        this.usunombre = usunombre;
+        this.usuapellido = usuapellido;
+        this.usudireccion = usudireccion;
+        this.usutelefono = usutelefono;
+        this.usucorreo = usucorreo;
+        this.usuusuario = usuusuario;
+        this.usucontrasena = usucontrasena;
+        this.usutipo = usutipo;
     }
 
-    public String getId() {
-        return id;
+    public String getUsuid() {
+        return usuid;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setUsuid(String usuid) {
+        this.usuid = usuid;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getUsunombre() {
+        return usunombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setUsunombre(String usunombre) {
+        this.usunombre = usunombre;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getUsuapellido() {
+        return usuapellido;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setUsuapellido(String usuapellido) {
+        this.usuapellido = usuapellido;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getUsudireccion() {
+        return usudireccion;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setUsudireccion(String usudireccion) {
+        this.usudireccion = usudireccion;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public String getUsutelefono() {
+        return usutelefono;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setUsutelefono(String usutelefono) {
+        this.usutelefono = usutelefono;
     }
 
-    public String getCorreo() {
-        return correo;
+    public String getUsucorreo() {
+        return usucorreo;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setUsucorreo(String usucorreo) {
+        this.usucorreo = usucorreo;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getUsuusuario() {
+        return usuusuario;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setUsuusuario(String usuusuario) {
+        this.usuusuario = usuusuario;
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public String getUsucontrasena() {
+        return usucontrasena;
     }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+    public void setUsucontrasena(String usucontrasena) {
+        this.usucontrasena = usucontrasena;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getUsutipo() {
+        return usutipo;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setUsutipo(String usutipo) {
+        this.usutipo = usutipo;
     }
+
     
-    
-    
+
 }

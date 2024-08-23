@@ -21,7 +21,7 @@
     </head>
     <%
         if (session.getAttribute("log") == null || session.getAttribute("log").equals('0')) {
-            response.sendRedirect("../Vistas/Loggin.jsp");
+            response.sendRedirect("../Vistas/LogginPage.jsp");
         }
     %>
     <body>
@@ -67,6 +67,7 @@
                     <li class="nav-item">
                         <a class="nav-link nav-text-white" href="#">
                             <i class="bi bi-cart-check-fill"></i> Carrito
+                            (<label style="color: darkorange">${contador}</label>)
                         </a>
                     </li>
                     <li class="nav-item dropdown">
@@ -95,61 +96,65 @@
             <p class="offer-text">Ofertas con el 30% de descuento</p>
         </div>
 
-    <br>
-    <section id="productos" class="product-container">
-        <c:forEach var="prod" items="${productos}">
-            <div class="card">
-
-
-                <img src="${prod.getFoto()}" alt="Descripción de la imagen" width="200" height="200">
-                <div class="card-info">
-                    <p class="text-title">${prod.getNombre()}</p>
-                    <p class="text-body">${prod.getDescripcion()}</p>
+        <br>
+        <section id="productos" class="product-container">
+            <div class="container">
+                <div class="row">
+                    <c:forEach var="prod" items="${productos}">
+                        <div class="col-md-4 col-sm-6 mb-4">
+                            <div class="card h-100">
+                                <img src="${prod.getFoto()}" class="card-img-top" alt="${prod.getNombre()}">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">${prod.getNombre()}</h5>
+                                    <p class="card-text">${prod.getDescripcion()}</p>
+                                    <!-- Botones alineados en la parte inferior -->
+                                    <div class="mt-auto">
+                                        <a href="/FarmaciaWeb/CtrProductoLi?accion=comprar&id=${prod.getId()}" class="btn btn-secondary ml-2">Carrito</a>
+                                        <a href="/FarmaciaWeb/CtrProductoLi?accion=AgregarCarrito&id=${prod.getId()}" class="btn btn-primary">Agregar al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
                 </div>
-                <div class="card-footer">
-                    <span class="text-title">${prod.getPrecio()}</span>
+            </div>
 
 
+
+        </section>
+    </main>
+    <div class="row-expand-lg py-4" id="footer" >
+        <div class="container" >
+            <div class="row">
+                <div class="col-md-4 text-black">
+                    <h5>Información</h5>
+                    <p>Dirección: calle 51d#2g63 </p>
+                    <p>Teléfono: 324 6794400 </p>
+                </div>
+                <div class="col-md-4 text-black">
+                    <h5>Métodos De Pago</h5>
+                    <a href="#"><img src="../img/mastercard.png" alt="" height="40px" width="70px" ></i>
+                        <a href="#"><img src="../img/visa.png" alt="" height="60px" width="50px"></a>
+                        <a href="#"><img src="../img/nequi.png" alt="" height="20px" width="55px" > </a>
+                </div>
+                <div class="col-md-4 text-black">
+                    <h5>Redes Sociales</h5>
+                    <a href="#" class="text-black"> Facebook <i class="bi bi-facebook"></i></a><br>
+                    <a href="#" class="text-black"> Instagram <i class="bi bi-instagram"></i></a>
                 </div>
             </div>
-        </c:forEach>
+            <div class="col-md-4 text-black">
+                <p>Tu salud, nuestra prioridad.Descubre la comodidad de cuidarte desde casa con nuestra drogueria
+                    en linea. Expertos en bienestar a solo un click.
+                </p>
+                <a href="#"><button type="button" class="btn btn-link">Terminos de servicio</button></a>
+                <a href="#"><button type="button" class="btn btn-link">politica de privacidad</button></a>
 
-        <!-- Add more cards here -->
-
-    </section>
-</main>
-<div class="row-expand-lg py-4" id="footer" >
-    <div class="container" >
-        <div class="row">
-            <div class="col-md-4 text-black">
-                <h5>Información</h5>
-                <p>Dirección: calle 51d#2g63 </p>
-                <p>Teléfono: 324 6794400 </p>
             </div>
-            <div class="col-md-4 text-black">
-                <h5>Métodos De Pago</h5>
-                <a href="#"><img src="../img/mastercard.png" alt="" height="40px" width="70px" ></i>
-                    <a href="#"><img src="../img/visa.png" alt="" height="60px" width="50px"></a>
-                    <a href="#"><img src="../img/nequi.png" alt="" height="20px" width="55px" > </a>
-            </div>
-            <div class="col-md-4 text-black">
-                <h5>Redes Sociales</h5>
-                <a href="#" class="text-black"> Facebook <i class="bi bi-facebook"></i></a><br>
-                <a href="#" class="text-black"> Instagram <i class="bi bi-instagram"></i></a>
-            </div>
-        </div>
-        <div class="col-md-4 text-black">
-            <p>Tu salud, nuestra prioridad.Descubre la comodidad de cuidarte desde casa con nuestra drogueria
-                en linea. Expertos en bienestar a solo un click.
-            </p>
-            <a href="#"><button type="button" class="btn btn-link">Terminos de servicio</button></a>
-            <a href="#"><button type="button" class="btn btn-link">politica de privacidad</button></a>
 
         </div>
 
     </div>
-
-</div>
 
 </div>
 

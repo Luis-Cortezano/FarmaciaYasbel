@@ -31,25 +31,25 @@ public class UsuarioDAO {
            Connection con = Conexcion.crearconexion();
            if (con != null){
                System.out.println("Se ha establecido una conexcion con la base de datos");
-               pstm = con.prepareStatement("select * from usuarios where usuario = ? ");
+               pstm = con.prepareStatement("select * from tblusuarios where usuario = ? ");
                pstm.setString(1, usu);
                rs = pstm.executeQuery();
                while (rs.next()){
                    if (!rs.getString("Usuario").equals("")){
-                       usua.setId(rs.getString("Id"));
-                       usua.setNombre(rs.getString("Nombre"));
-                       usua.setApellido(rs.getString("Apellido"));
-                       usua.setDireccion(rs.getString("Direccion"));
-                       usua.setTelefono(rs.getString("Telefono"));
-                       usua.setUsuario(rs.getString("Usuario"));
-                       usua.setCorreo(rs.getString("Correo"));
-                       usua.setContrasena(rs.getString("Contrasena"));
-                       usua.setTipo(rs.getString("Tipo"));
+                       usua.setUsuid(rs.getString("Id"));
+                       usua.setUsunombre(rs.getString("Nombre"));
+                       usua.setUsuapellido(rs.getString("Apellido"));
+                       usua.setUsudireccion(rs.getString("Direccion"));
+                       usua.setUsutelefono(rs.getString("Telefono"));
+                       usua.setUsuusuario(rs.getString("Usuario"));
+                       usua.setUsucorreo(rs.getString("Correo"));
+                       usua.setUsucontrasena(rs.getString("Contrasena"));
+                       usua.setUsutipo(rs.getString("Tipo"));
                    }
                }
            }
        }catch(Exception e){
-           System.out.println("Error al conectarse con la base de datos usuario: "+e);
+           System.out.println("Error al conectarse con la base de datos usuario: " + e);
        }
        return usua;
     }
@@ -62,18 +62,18 @@ public class UsuarioDAO {
            if (con != null){
                System.out.println("Se ha establecido una conexcion con la base de datos");
            }
-           pstm = con.prepareStatement("select * from usuarios");
+           pstm = con.prepareStatement("select * from tblusuarios");
            rs = pstm.executeQuery();
            while(rs.next()){
                Usuario usu = new Usuario();
-               usu.setId(rs.getString(1));
-               usu.setNombre(rs.getString(2));
+               usu.setUsuid(rs.getString(1));
+               usu.setTipo(rs.getString(9));
+               usu.setUsunombre(rs.getString(2));
                usu.setApellido(rs.getString(3));
                usu.setDireccion(rs.getString(4));
                usu.setTelefono(rs.getString(5));
                usu.setCorreo(rs.getString(6));
                usu.setUsuario(rs.getString(7));
-               usu.setTipo(rs.getString(9));
                list.add(usu);
            }
         }catch(Exception e){

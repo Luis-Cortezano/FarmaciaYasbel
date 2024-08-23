@@ -19,11 +19,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="/FarmaciaWeb/JS/scripts.js" type="text/javascript"></script>
     </head>
-    <%
-        if (session.getAttribute("log") == null || session.getAttribute("log").equals('0')) {
-            response.sendRedirect("../Vistas/Loggin.jsp");
-        }
-    %>
+   
     <body>
         <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
             <a class="navbar-brand" href="/FarmaciaWeb/CtrProductoLi?accion=home">

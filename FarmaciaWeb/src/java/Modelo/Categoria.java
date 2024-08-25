@@ -10,42 +10,43 @@ package Modelo;
  * @author SENA
  */
 public class Categoria {
-    private int id;
-    private String nombre;
-    private String descripcion;
+    private int CatCodigo;
+    private String CatNombre;
+    private String CatDescripcion;
 
     public Categoria() {
     }
 
-    public Categoria(int id, String nombre, String descripcion) {
-        this.id = id;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
+    public Categoria(int CatCodigo, String CatNombre, String CatDescripcion) {
+        this.CatCodigo = CatCodigo;
+        this.CatNombre = CatNombre;
+        this.CatDescripcion = CatDescripcion;
     }
 
-    public int getId() {
-        return id;
+    public int getCatCodigo() {
+        return CatCodigo;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCatCodigo(int CatCodigo) {
+        this.CatCodigo = CatCodigo;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getCatNombre() {
+        return CatNombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setCatNombre(String CatNombre) {
+        this.CatNombre = CatNombre;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getCatDescripcion() {
+        return CatDescripcion;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setCatDescripcion(String CatDescripcion) {
+        this.CatDescripcion = CatDescripcion;
     }
+    
     
     
 }

@@ -65,7 +65,7 @@ public class CtrUsuarioCre extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Usuario> list = dao.listar();
+        List<Usuario> list = dao.listarT();
         String id, nom, ape, dir, tel, cor, usu, pas, tip;
         String accion = request.getParameter("accion");
         System.out.println("accion: "+accion);
@@ -82,19 +82,19 @@ public class CtrUsuarioCre extends HttpServlet {
                 pas = request.getParameter("contrasena");
                 tip = request.getParameter("tipo");
                 
-                us.setId(id);
-                us.setNombre(nom);
-                us.setApellido(ape);
-                us.setDireccion(dir);
-                us.setTelefono(tel);
-                us.setCorreo(cor);
-                us.setUsuario(usu);
+                us.setUsuid(id);
+                us.setUsutipo(tip);
+                us.setUsuusuario(usu);
+                us.setUsunombre(nom);
+                us.setUsuapellido(ape);
+                us.setUsucorreo(cor);
                 String contrasenaencriptada = encriptarcontrasena(pas);
-                us.setContrasena(contrasenaencriptada);
-                us.setTipo(tip);
+                us.setUsucontrasena(contrasenaencriptada);
+                us.setUsutelefono(tel);
+                us.setUsudireccion(dir);
                 
                 dao.crear(us);
-                list = dao.listar();
+                list = dao.listarT();
                 request.setAttribute("usuarios", list);
                 request.getRequestDispatcher("Vistas/HomePage.jsp").forward(request, response);
                 break;

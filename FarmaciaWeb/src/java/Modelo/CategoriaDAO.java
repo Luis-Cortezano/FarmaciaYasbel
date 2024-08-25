@@ -21,7 +21,7 @@ public class CategoriaDAO {
     Connection con;
     PreparedStatement pstm;
     Conectar Conexcion;
-    ResultSet rs;
+    ResultSet resul;
 
     public List listar() {
         List<Categoria> categoria = new ArrayList();
@@ -32,18 +32,18 @@ public class CategoriaDAO {
                 System.out.println("Se ha establecido una conexcion con la base de datos");
 
             }
-            pstm = con.prepareStatement("select * from categoria");
-            rs = pstm.executeQuery();
-            while (rs.next()) {
-                Categoria c = new Categoria();
-                c.setId(rs.getInt(1));
-                c.setNombre(rs.getString(2));
-                c.setDescripcion(rs.getString(3));
-                categoria.add(c);
+            pstm = con.prepareStatement("select * from tblcategorias");
+            resul = pstm.executeQuery();
+            while (resul.next()) {
+                Categoria cat = new Categoria();
+                cat.setCatCodigo(resul.getInt(1));
+                cat.setCatNombre(resul.getString(2));
+                cat.setCatDescripcion(resul.getString(3));
+                categoria.add(cat);
             }
 
         } catch (Exception e) {
-            System.out.println("Error al listar las categoriasos " + e);
+            System.out.println("Error al listar las categorias " + e);
         }
         return categoria;
     }

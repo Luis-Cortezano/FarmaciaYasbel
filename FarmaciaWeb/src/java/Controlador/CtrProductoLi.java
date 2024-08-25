@@ -7,6 +7,8 @@ package Controlador;
 
 import Modelo.Carrito;
 import Modelo.CategoriaDAO;
+import Modelo.PQR;
+import Modelo.PQRDAO;
 import Modelo.Producto;
 import Modelo.ProductoDAO;
 import Modelo.Usuario;
@@ -39,10 +41,12 @@ public class CtrProductoLi extends HttpServlet {
      */
     ProductoDAO pdao = new ProductoDAO();
     CategoriaDAO cdao = new CategoriaDAO();
+    
     List<Producto> productos = new ArrayList();
     List<CategoriaDAO> categoria = new ArrayList();
     List<Carrito> listacarrito = new ArrayList();
     Usuario us;
+   
     int cantidad;
     Carrito car;
     int idp;
@@ -213,6 +217,7 @@ public class CtrProductoLi extends HttpServlet {
                     request.getRequestDispatcher("Vistas/CarritoAdmin.jsp").forward(request, response);
                 }
                 break;
+                
         }
     
     }

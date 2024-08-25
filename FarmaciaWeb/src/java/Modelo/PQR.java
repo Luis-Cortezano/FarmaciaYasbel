@@ -10,12 +10,12 @@ package Modelo;
  * @author HOME
  */
 public class PQR {
-    private int pqrCodigo;
-    private int tblUsuID;
+    private String pqrCodigo;
+    private String tblUsuID;
     private String pqrFecha;
     private String pqrNombre;
-    private String correo;
-    private int pqrTelefono;
+    private String pqrCorreo;
+    private String pqrTelefono;
     private String  pqrTipo;
     private String pqrDescripcion;
     private String PqrEstado;
@@ -23,31 +23,31 @@ public class PQR {
     public PQR() {
     }
 
-    public PQR(int pqrCodigo, int tblUsuID, String pqrFecha, String pqrNombre, String correo, int pqrTelefono, String pqrTipo, String pqrDescripcion, String PqrEstado) {
+    public PQR(String pqrCodigo, String tblUsuID, String pqrFecha, String pqrNombre, String pqrCorreo, String pqrTelefono, String pqrTipo, String pqrDescripcion, String PqrEstado) {
         this.pqrCodigo = pqrCodigo;
         this.tblUsuID = tblUsuID;
         this.pqrFecha = pqrFecha;
         this.pqrNombre = pqrNombre;
-        this.correo = correo;
+        this.pqrCorreo = pqrCorreo;
         this.pqrTelefono = pqrTelefono;
         this.pqrTipo = pqrTipo;
         this.pqrDescripcion = pqrDescripcion;
         this.PqrEstado = PqrEstado;
     }
 
-    public int getPqrCodigo() {
+    public String getPqrCodigo() {
         return pqrCodigo;
     }
 
-    public void setPqrCodigo(int pqrCodigo) {
+    public void setPqrCodigo(String pqrCodigo) {
         this.pqrCodigo = pqrCodigo;
     }
 
-    public int getTblUsuID() {
+    public String getTblUsuID() {
         return tblUsuID;
     }
 
-    public void setTblUsuID(int tblUsuID) {
+    public void setTblUsuID(String tblUsuID) {
         this.tblUsuID = tblUsuID;
     }
 
@@ -67,19 +67,19 @@ public class PQR {
         this.pqrNombre = pqrNombre;
     }
 
-    public String getCorreo() {
-        return correo;
+    public String getPqrCorreo() {
+        return pqrCorreo;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setPqrCorreo(String pqrCorreo) {
+        this.pqrCorreo = pqrCorreo;
     }
 
-    public int getPqrTelefono() {
+    public String getPqrTelefono() {
         return pqrTelefono;
     }
 
-    public void setPqrTelefono(int pqrTelefono) {
+    public void setPqrTelefono(String pqrTelefono) {
         this.pqrTelefono = pqrTelefono;
     }
 
@@ -106,6 +106,6 @@ public class PQR {
     public void setPqrEstado(String PqrEstado) {
         this.PqrEstado = PqrEstado;
     }
-    
+
     
 }

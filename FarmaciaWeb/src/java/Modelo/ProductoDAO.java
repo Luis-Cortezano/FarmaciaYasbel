@@ -22,7 +22,7 @@ public class ProductoDAO {
     PreparedStatement pstm;
     Conectar Conexcion;
     ResultSet resul;
-    Producto prod = new Producto();
+    
 
     public List listarS() {
         List<Producto> producto = new ArrayList();
@@ -36,7 +36,7 @@ public class ProductoDAO {
             pstm = con.prepareStatement("select * from tblproductos where ProStock > 0");
             resul = pstm.executeQuery();
             while (resul.next()) {
-
+                Producto prod = new Producto();
                 prod.setProCodigo(resul.getInt(1));
                 prod.setTblProverdores(resul.getInt(2));
                 prod.setProPrecio(resul.getInt(3));
@@ -69,7 +69,7 @@ public class ProductoDAO {
             pstm = con.prepareStatement("select * from tblproductos");
             resul = pstm.executeQuery();
             while (resul.next()) {
-
+                Producto prod = new Producto();
                 prod.setProCodigo(resul.getInt(1));
                 prod.setTblProverdores(resul.getInt(2));
                 prod.setProPrecio(resul.getInt(3));
@@ -104,7 +104,7 @@ public class ProductoDAO {
             pstm.setString(1, nombre);
             resul = pstm.executeQuery();
             while (resul.next()) {
-
+                Producto prod = new Producto();
                 prod.setProCodigo(resul.getInt(1));
                 prod.setTblProverdores(resul.getInt(2));
                 prod.setProPrecio(resul.getInt(3));
@@ -126,7 +126,7 @@ public class ProductoDAO {
     }
 
     public Producto listarI(int id) {
-
+        Producto prod = new Producto();
         try {
             Conexcion = new Conectar();
             Connection con = Conexcion.crearconexion();
@@ -138,6 +138,7 @@ public class ProductoDAO {
             pstm.setInt(1, id);
             resul = pstm.executeQuery();
             while (resul.next()) {
+                
                 prod.setProCodigo(resul.getInt(1));
                 prod.setTblProverdores(resul.getInt(2));
                 prod.setProPrecio(resul.getInt(3));
@@ -158,7 +159,7 @@ public class ProductoDAO {
     }
 
     public Producto listaridp(int idp) {
-
+        Producto prod = new Producto();
         try {
             Conexcion = new Conectar();
             Connection con = Conexcion.crearconexion();
@@ -170,7 +171,7 @@ public class ProductoDAO {
             pstm.setInt(1, idp);
             resul = pstm.executeQuery();
             while (resul.next()) {
-
+                
                 prod.setProCodigo(resul.getInt(1));
                 prod.setTblProverdores(resul.getInt(2));
                 prod.setProPrecio(resul.getInt(3));
@@ -204,7 +205,7 @@ public class ProductoDAO {
             pstm.setInt(1, idcat);
             resul = pstm.executeQuery();
             while (resul.next()) {
-
+                Producto prod = new Producto();
                 prod.setProCodigo(resul.getInt(1));
                 prod.setTblProverdores(resul.getInt(2));
                 prod.setProPrecio(resul.getInt(3));
@@ -240,6 +241,7 @@ public class ProductoDAO {
             resul = pstm.executeQuery();
 
             while (resul.next()) {
+                Producto prod = new Producto();
                 prod.setProCodigo(resul.getInt(1));
                 prod.setTblProverdores(resul.getInt(2));
                 prod.setProPrecio(resul.getInt(3));

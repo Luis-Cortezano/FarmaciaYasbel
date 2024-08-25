@@ -114,7 +114,7 @@ public class CtrProductoLi extends HttpServlet {
                 sesion.invalidate();
                 response.sendRedirect("/FarmaciaWeb/Vistas/LogginPage.jsp");
                 break;
-            /*
+            
             case "AgregarCarrito":
                 cantidad = 1;
                 int pos = 0;
@@ -137,12 +137,12 @@ public class CtrProductoLi extends HttpServlet {
                         car = new Carrito();
                         car.setItem(item);
                         car.setIdproducto(idp);
-                        car.setNombre(p.getNombre());
-                        car.setDescripcion(p.getDescripcion());
-                        car.setFoto(p.getFoto());
-                        car.setPreciocompra(p.getPrecio());
+                        car.setNombre(p.getProNombre());
+                        car.setDescripcion(p.getProDescripcion());
+                        car.setFoto(p.getProFoto());
+                        car.setPreciocompra(p.getProPrecio());
                         car.setCantidad(cantidad);
-                        car.setSubtotal(cantidad * p.getPrecio());
+                        car.setSubtotal(cantidad * p.getProPrecio());
                         listacarrito.add(car);
                     }
                 } else {
@@ -150,12 +150,12 @@ public class CtrProductoLi extends HttpServlet {
                     car = new Carrito();
                     car.setItem(item);
                     car.setIdproducto(idp);
-                    car.setNombre(p.getNombre());
-                    car.setDescripcion(p.getDescripcion());
-                    car.setFoto(p.getFoto());
-                    car.setPreciocompra(p.getPrecio());
+                    car.setNombre(p.getProNombre());
+                    car.setDescripcion(p.getProDescripcion());
+                    car.setFoto(p.getProFoto());
+                    car.setPreciocompra(p.getProPrecio());
                     car.setCantidad(cantidad);
-                    car.setSubtotal(cantidad * p.getPrecio());
+                    car.setSubtotal(cantidad * p.getProPrecio());
                     listacarrito.add(car);
                 }
                 request.setAttribute("contador", listacarrito.size());
@@ -177,17 +177,17 @@ public class CtrProductoLi extends HttpServlet {
             case "Comprar":
                 totalpagar = 0;
                 idp = Integer.parseInt(request.getParameter("id"));
-                p = pdao.listarid(idp);
+                p = pdao.listaridp(idp);
                 item++;
                 car = new Carrito();
                 car.setItem(item);
                 car.setIdproducto(idp);
-                car.setNombre(p.getNombre());
-                car.setDescripcion(p.getDescripcion());
-                car.setFoto(p.getFoto());
-                car.setPreciocompra(p.getPrecio());
+                car.setNombre(p.getProNombre());
+                car.setDescripcion(p.getProDescripcion());
+                car.setFoto(p.getProFoto());
+                car.setPreciocompra(p.getProPrecio());
                 car.setCantidad(cantidad);
-                car.setSubtotal(cantidad * p.getPrecio());
+                car.setSubtotal(cantidad * p.getProPrecio());
                 boolean producto = false;
                 int con = 0;
                 for (int i = 0; i < listacarrito.size(); i++) {
@@ -212,7 +212,7 @@ public class CtrProductoLi extends HttpServlet {
                 if (sesion.getAttribute("tipo").equals("Administrador")) {
                     request.getRequestDispatcher("Vistas/CarritoAdmin.jsp").forward(request, response);
                 }
-                break;*/
+                break;
         }
     }
 

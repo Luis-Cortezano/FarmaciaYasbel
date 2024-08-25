@@ -167,22 +167,22 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="form">
+                <form action="/FarmaciaWeb/CtrPQR?accion=CrearPQR" method="post" >
                     <div class="form-group">
                         <label for="name"> Nombre</label>
-                        <input id="name" type="text" placeholder="Ingrese su nombre">
+                        <input id="name" name="nombre" type="text" placeholder="Ingrese su nombre">
                     </div>
                     <div class="form-group">
                         <label for="email"> Correo electrónico</label>
-                        <input id="email" type="email" placeholder="Ingrese su correo">
+                        <input id="email" name="correo" type="email" placeholder="Ingrese su correo">
                     </div>
                     <div class="form-group">
                         <label for="phone"> Teléfono</label>
-                        <input id="phone" type="text" placeholder="Ingrese su teléfono">
+                        <input id="phone" name="telefono" type="text" placeholder="Ingrese su teléfono">
                     </div>
                     <div class="form-group">
                         <label for="type"> Tipo de solicitud</label>
-                        <select id="type">
+                        <select id="type" name="tipo">
                             <option value="" disabled selected>Seleccione una opción</option>
                             <option value="petition">Petición</option>
                             <option value="complaint">Queja</option>
@@ -191,10 +191,10 @@
                     </div>
                     <div class="form-group">
                         <label for="description"> Descripción de la solicitud</label>
-                        <textarea id="description" placeholder="Ingrese los detalles de su solicitud"></textarea>
+                        <textarea id="description" name="descripcion" placeholder="Ingrese los detalles de su solicitud"></textarea>
                     </div>
-                    <button type="submit" class="button"> Enviar</button>
-                </div>
+                    <button type="submit" name="accion" value="CrearPQR" class="button"> Enviar</button>
+                </form>
             </div>
             <div class="modal-footer" id="modal">
                 <p>Si el problema persiste, llame a la linea +123-456-789</p>

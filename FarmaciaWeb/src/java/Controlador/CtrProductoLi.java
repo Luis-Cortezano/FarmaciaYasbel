@@ -58,9 +58,9 @@ public class CtrProductoLi extends HttpServlet {
         String accion = request.getParameter("accion");
         System.out.println("accion= " + accion);
         HttpSession sesion = request.getSession();
-        productos = pdao.listar();
+        productos = pdao.listarS();
         categoria = cdao.listar();
-        System.out.println("producto " + productos.get(0).getFoto());
+        System.out.println("producto " + productos.get(0).getProFoto());
         Producto p = new Producto();
         request.setAttribute("contador", listacarrito.size());
         switch (accion) {
@@ -76,7 +76,6 @@ public class CtrProductoLi extends HttpServlet {
                     if (sesion.getAttribute("tipo").equals("Administrador")) {
                         System.out.println("entro en administador");
                         request.getRequestDispatcher("Vistas/HomePage.jsp").forward(request, response);
-                        //System.out.println("tipo : " + us.getTipo());
                     } else {
                         if (sesion.getAttribute("tipo").equals("Cliente")) {
                             request.getRequestDispatcher("Vistas/HomePage.jsp").forward(request, response);
@@ -90,7 +89,7 @@ public class CtrProductoLi extends HttpServlet {
                 break;
             case "buscarcat":
                 int idcat = Integer.parseInt(request.getParameter("catid"));
-                productos = pdao.buscarcat(idcat);
+                productos = pdao.buscarCateg(idcat);
                 request.setAttribute("categorias", categoria);
                 request.setAttribute("productos", productos);
 
@@ -100,7 +99,7 @@ public class CtrProductoLi extends HttpServlet {
                 break;
             case "buscar":
                 String nombre = request.getParameter("busqueda");
-                productos = pdao.buscar(nombre);
+                productos = pdao.buscarN(nombre);
                 request.setAttribute("categorias", categoria);
                 request.setAttribute("productos", productos);
                 if (sesion.getAttribute("tipo").equals("Administrador")) {
@@ -111,16 +110,17 @@ public class CtrProductoLi extends HttpServlet {
                 }
                 break;
             case "salir":
-              
+
                 sesion.invalidate();
                 response.sendRedirect("/FarmaciaWeb/Vistas/LogginPage.jsp");
                 break;
+            /*
             case "AgregarCarrito":
                 cantidad = 1;
                 int pos = 0;
 
                 idp = Integer.parseInt(request.getParameter("id"));
-                p = pdao.listarid(idp);
+                p = pdao.listaridp(idp);
                 if (listacarrito.size() > 0) {
                     for (int i = 0; i < listacarrito.size(); i++) {
                         if (idp == listacarrito.get(i).getIdproducto()) {
@@ -212,7 +212,7 @@ public class CtrProductoLi extends HttpServlet {
                 if (sesion.getAttribute("tipo").equals("Administrador")) {
                     request.getRequestDispatcher("Vistas/CarritoAdmin.jsp").forward(request, response);
                 }
-                break;
+                break;*/
         }
     }
 

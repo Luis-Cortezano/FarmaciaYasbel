@@ -93,23 +93,22 @@ public class CtrValidarInfo extends HttpServlet {
             String usu = request.getParameter("txtusu");
             String pas = request.getParameter("txtpass");
             us = usudao.validar(usu, pas);
-            System.out.println("tipo : " + us.getTipo());
-            if (us.getUsuario() != null) {
-                System.out.println("usuario: "+us.getUsuario());
+            System.out.println("tipo : " + us.getUsutipo());
+            if (us.getUsuusuario()!= null) {
+                System.out.println("usuario: "+us.getUsuusuario());
                 System.out.println("contraseña: "+pas);
-                boolean verificarpassword = verificarcontrasena(pas, us.getContrasena());
+                boolean verificarpassword = verificarcontrasena(pas, us.getUsucontrasena());
                 if (verificarpassword) {
                     sesion.setAttribute("log", '1');
-                    sesion.setAttribute("User", us.getUsuario());
-                    sesion.setAttribute("tipo", us.getTipo());
-                    sesion.setAttribute("id", us.getId());
-                    sesion.setAttribute("correo", us.getCorreo());
-                    System.out.println("correo: "+us.getCorreo());
+                    sesion.setAttribute("User", us.getUsuusuario());
+                    sesion.setAttribute("tipo", us.getUsutipo());
+                    sesion.setAttribute("id", us.getUsuid());
+                    sesion.setAttribute("correo", us.getUsucorreo());
                     sesion.setAttribute("usuario", us);
-                    if (us.getTipo().equals("Administrador")) {
+                    if (us.getUsutipo().equals("Administrador")) {
                         response.sendRedirect("/FarmaciaWeb/CtrProductoLi?accion=home");
                     }
-                    if (us.getTipo().equals("Cliente")) {
+                    if (us.getUsutipo().equals("Cliente")) {
                         response.sendRedirect("/FarmaciaWeb/Vistas/HomePage.jsp");
                     }
                 }

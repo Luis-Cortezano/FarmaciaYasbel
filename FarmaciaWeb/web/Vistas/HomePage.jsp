@@ -57,8 +57,8 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-center" href="#"><i class="bi bi-person"></i></a>
-                            <a class="dropdown-item " >${usuario.getNombre()}</a>
-                            <a class="dropdown-item " >${usuario.getTipo()}</a>
+                            <a class="dropdown-item " >${usuario.getUsunombre()}</a>
+                            <a class="dropdown-item " >${usuario.getUsutipo()}</a>
                             <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#exampleModal">PQR</a>
                             <a class="dropdown-item text-danger" href="/FarmaciaWeb/CtrProductoLi?accion=salir">Cerrar Sesion</a>
 
@@ -77,8 +77,8 @@
 
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <c:forEach var="c" items="${categorias}">
-                                <input type="hidden" value="${c.getId()}" name="catid" id="catid">
-                                <li><a class="dropdown-item" href="/FarmaciaWeb/CtrProductoLi?accion=buscarcat&catid=${c.getId()}" ><i class="bi bi-bookmarks"></i> ${c.getNombre()}</a></li>
+                                <input type="hidden" value="${c.getCatCodigo()}" name="catid" id="catid">
+                                <li><a class="dropdown-item" href="/FarmaciaWeb/CtrProductoLi?accion=buscarcat&catid=${c.getCatCodigo()}" ><i class="bi bi-bookmarks"></i> ${c.getCatNombre()}</a></li>
 
                             </c:forEach>
                         </ul>
@@ -103,14 +103,14 @@
                     <c:forEach var="prod" items="${productos}">
                         <div class="col-md-4 col-sm-6 mb-4">
                             <div class="card h-100">
-                                <img src="${prod.getFoto()}" class="card-img-top" alt="${prod.getNombre()}">
+                                <img src="${prod.getProFoto()}" class="card-img-top" alt="${prod.getProNombre()}">
                                 <div class="card-body d-flex flex-column">
-                                    <h5 class="card-title">${prod.getNombre()}</h5>
-                                    <p class="card-text">${prod.getDescripcion()}</p>
-                                    <!-- Botones alineados en la parte inferior -->
+                                    <h5 class="card-title">${prod.getProNombre()}</h5>
+                                    <p class="card-text">${prod.getProDescripcion()}</p>
+                                    
                                     <div class="mt-auto">
-                                        <a href="/FarmaciaWeb/CtrProductoLi?accion=comprar&id=${prod.getId()}" class="btn btn-secondary ml-2">Carrito</a>
-                                        <a href="/FarmaciaWeb/CtrProductoLi?accion=AgregarCarrito&id=${prod.getId()}" class="btn btn-primary">Agregar al carrito</a>
+                                        <a href="/FarmaciaWeb/CtrProductoLi?accion=comprar&id=${prod.getProCodigo()}" class="btn btn-secondary ml-2">Carrito</a>
+                                        <a href="/FarmaciaWeb/CtrProductoLi?accion=AgregarCarrito&id=${prod.getProCodigo()}" class="btn btn-primary">Agregar al carrito</a>
                                     </div>
                                 </div>
                             </div>

@@ -11,82 +11,122 @@ package Modelo;
  */
 public class Producto {
 
-    private int id;
-    private String nombre;
-    private String foto;
-    private String descripcion;
-    private int precio;
-    private int stok;
-    private int categoria;
+    private int proCodigo;
+    private int tblProverdores;
+    private int proPrecio;
+    private String proDescuento;
+    private String proMarca;
+    private String proNombre;
+    private String proFoto;
+    private String proDescripcion;
+    private String proFechaVencimiento;
+    private int proStok;
+    private int tblCategoria;
 
     public Producto() {
     }
 
-    public Producto(int id, String nombre, String foto, String descripcion, int precio, int stok, int categoria) {
-        this.id = id;
-        this.nombre = nombre;
-        this.foto = foto;
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.stok = stok;
-        this.categoria = categoria;
+    public Producto(int proCodigo, int tblProverdores, int proPrecio, String proDescuento, String proMarca, String proNombre, String proFoto, String proDescripcion, String proFechaVencimiento, int proStok, int tblCategoria) {
+        this.proCodigo = proCodigo;
+        this.tblProverdores = tblProverdores;
+        this.proPrecio = proPrecio;
+        this.proDescuento = proDescuento;
+        this.proMarca = proMarca;
+        this.proNombre = proNombre;
+        this.proFoto = proFoto;
+        this.proDescripcion = proDescripcion;
+        this.proFechaVencimiento = proFechaVencimiento;
+        this.proStok = proStok;
+        this.tblCategoria = tblCategoria;
     }
 
-    public int getId() {
-        return id;
+    public int getProCodigo() {
+        return proCodigo;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setProCodigo(int proCodigo) {
+        this.proCodigo = proCodigo;
     }
 
-    public String getNombre() {
-        return nombre;
+    public int getTblProverdores() {
+        return tblProverdores;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setTblProverdores(int tblProverdores) {
+        this.tblProverdores = tblProverdores;
     }
 
-    public String getFoto() {
-        return foto;
+    public int getProPrecio() {
+        return proPrecio;
     }
 
-    public void setFoto(String foto) {
-        this.foto = foto;
+    public void setProPrecio(int proPrecio) {
+        this.proPrecio = proPrecio;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getProDescuento() {
+        return proDescuento;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setProDescuento(String proDescuento) {
+        this.proDescuento = proDescuento;
     }
 
-    public int getPrecio() {
-        return precio;
+    public String getProMarca() {
+        return proMarca;
     }
 
-    public void setPrecio(int precio) {
-        this.precio = precio;
+    public void setProMarca(String proMarca) {
+        this.proMarca = proMarca;
     }
 
-    public int getStok() {
-        return stok;
+    public String getProNombre() {
+        return proNombre;
     }
 
-    public void setStok(int stok) {
-        this.stok = stok;
+    public void setProNombre(String proNombre) {
+        this.proNombre = proNombre;
     }
 
-    public int getCategoria() {
-        return categoria;
+    public String getProFoto() {
+        return proFoto;
     }
 
-    public void setCategoria(int categoria) {
-        this.categoria = categoria;
+    public void setProFoto(String proFoto) {
+        this.proFoto = proFoto;
     }
-    
+
+    public String getProDescripcion() {
+        return proDescripcion;
+    }
+
+    public void setProDescripcion(String proDescripcion) {
+        this.proDescripcion = proDescripcion;
+    }
+
+    public String getProFechaVencimiento() {
+        return proFechaVencimiento;
+    }
+
+    public void setProFechaVencimiento(String proFechaVencimiento) {
+        this.proFechaVencimiento = proFechaVencimiento;
+    }
+
+    public int getProStok() {
+        return proStok;
+    }
+
+    public void setProStok(int proStok) {
+        this.proStok = proStok;
+    }
+
+    public int getTblCategoria() {
+        return tblCategoria;
+    }
+
+    public void setTblCategoria(int tblCategoria) {
+        this.tblCategoria = tblCategoria;
+    }
+
     
 }

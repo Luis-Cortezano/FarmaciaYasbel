@@ -173,7 +173,7 @@ public class CtrProductoLi extends HttpServlet {
                 request.setAttribute("totalpagar", totalpagar);
                 request.setAttribute("carrito", listacarrito);
                 if (sesion.getAttribute("tipo").equals("Administrador")) {
-                    request.getRequestDispatcher("Vistas/CarritoAdmin.jsp").forward(request, response);
+                    request.getRequestDispatcher("Vistas/CarritoCliente.jsp").forward(request, response);
                 } else if (sesion.getAttribute("tipo").equals("Cliente")) {
                     request.getRequestDispatcher("Vistas/CarritoCliente.jsp").forward(request, response);
                 }
@@ -214,7 +214,7 @@ public class CtrProductoLi extends HttpServlet {
                 request.setAttribute("totalpagar", totalpagar);
                 request.setAttribute("carrito", listacarrito);
                 if (sesion.getAttribute("tipo").equals("Administrador")) {
-                    request.getRequestDispatcher("Vistas/CarritoAdmin.jsp").forward(request, response);
+                    request.getRequestDispatcher("Vistas/CarritoCliente.jsp").forward(request, response);
                 }
                 break;
                 

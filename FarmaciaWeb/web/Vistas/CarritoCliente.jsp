@@ -3,7 +3,7 @@
     Created on : 14/08/2024, 08:01:33 AM
     Author     : SENA
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,134 +11,144 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
           <title>Carrito de Compras</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-        <link href="../CSS/Gestion-C.css" rel="stylesheet" type="text/css"/>
-        <link href="../CSS/style.css" rel="stylesheet" type="text/css"/>
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <link href="/FarmaciaWeb/CSS/style.css" rel="stylesheet" type="text/css"/>
+        
     </head>
     <body>
          <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-    <a class="navbar-brand" href="#">
-      <img src="../Imagenes/images.png" alt="Pill Bottle Icon" class="icon" width="30" height="30"/>
-      Farma-online yasbel.com
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+            <a class="navbar-brand" href="/FarmaciaWeb/CtrProductoLi?accion=home">
+                <img src="/FarmaciaWeb/Imagenes/lo-removebg-preview.png" class="icon" width="60px" height="60px"/>
+                Farmacia yasbel
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <form class="form-inline my-2 my-lg-0 mr-auto">
-        <input class="form-control mr-sm-2" type="search" placeholder="Buscar productos..." aria-label="Search">
-        <button class="btn-search my-2 my-sm-0" type="submit">
-          <div class="original">BUSCAR</div>
-          <div class="letters">
-            <span>B</span>
-            <span>U</span>
-            <span>S</span>
-            <span>C</span>
-            <span>A</span>
-            <span>R</span>
-          </div>
-        </button>
-      </form>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <form class="form-inline my-2 my-lg-0 mr-auto" action="/FarmaciaWeb/CtrProductoLi?accion=buscar" method="post">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar productos..." aria-label="Search" name="busqueda">
+                    <button class="btn-search my-2 my-sm-0" type="submit">
+                        <div class="original">BUSCAR</div>
+                        <div class="letters">
+                            <span>B</span>
+                            <span>U</span>
+                            <span>S</span>
+                            <span>C</span>
+                            <span>A</span>
+                            <span>R</span>
+                        </div>
+                    </button>
+                </form>
 
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link nav-text-white" href="#">
-            <i class="bi bi-person"></i> Mi cuenta
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link nav-text-white" href="#">
-            <i class="bi bi-cart-check-fill"></i> Carrito
-          </a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle nav-text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="bi bi-bookmark"></i> Comprar por categorías
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Hogar</a>
-            <a class="dropdown-item" href="#">Salud y Medicamentos</a>
-            <a class="dropdown-item" href="#">Apartado de Bebes</a>
-          </div>
-        </li>
-      </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle nav-text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="bi bi-person"></i> Mi Cuenta
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item text-center" href="#"><i class="bi bi-person"></i></a>
+                            <a class="dropdown-item " >${usuario.getUsunombre()}</a>
+                            <a class="dropdown-item " >${usuario.getUsutipo()}</a>
+                            <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#exampleModal">PQR</a>
+                            <a class="dropdown-item text-danger" href="/FarmaciaWeb/CtrProductoLi?accion=salir">Cerrar Sesion</a>
+
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-text-white" href="CtrProductoLi?accion=Carrito">
+                            <i class="bi bi-cart-check-fill"></i> Carrito
+                            (<label style="color: darkorange">${contador}</label>)
+                            
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle nav-text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="bi bi-bookmark"></i> Comprar por categorías
+                        </a>
+
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <c:forEach var="c" items="${categorias}">
+                                <input type="hidden" value="${c.getCatCodigo()}" name="catid" id="catid">
+                                <li><a class="dropdown-item" href="/FarmaciaWeb/CtrProductoLi?accion=buscarcat&catid=${c.getCatCodigo()}" ><i class="bi bi-bookmarks"></i> ${c.getCatNombre()}</a></li>
+
+                            </c:forEach>
+                        </ul>
+
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <br>
+        <br>
+        <br>
+        <br>
+                            
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        
+        <div class="container">
+           <div class="main-content">
+                <h1 class="main-title">Tu Carrito</h1>
+                
+                <c:forEach var="car" items="${carrito}">
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-info">
+                            <img src="${car.getFoto()}" alt="Producto 1" class="product-img" style="height: 200px ; width: 200px;">
+                            <div class="product-details">
+                                <h3 class="product-name">${car.getNombre()}</h3>
+                                <p class="product-price"></p>
+                                <input type="hidden" id="idp" value="${car.getIdproducto()}">
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <div class="quantity-controls">
+                                <button class="quantity-btn">-</button>
+                                <span></span>
+                                <button class="quantity-btn">+</button>
+                            </div>
+                            <button class="remove-btn">Eliminar</button>
+                        </div>
+                    </div>
+                </div>
+                </c:forEach>
+                
+                
+                <div class="summary-card">
+                    <div class="summary-header">
+                        <h2 class="summary-title">Resumen del Pedido</h2>
+                        <button class="empty-cart-btn">Vaciar Carrito</button>
+                    </div>
+                    <div class="summary-details">
+                        <div class="summary-item">
+                            <p>Subtotal:</p>
+                            <p></p>
+                        </div>
+                        <div class="summary-item">
+                            <p>Envío:</p>
+                            <p>$2.99</p>
+                        </div>
+                        <div class="summary-item summary-total">
+                            <p>Total:</p>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="summary-actions">
+                        <button class="continue-shopping-btn">Seguir Comprando</button>
+                        <button class="checkout-btn">Proceder al Pago</button>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
-  </nav>
-         <div class="container my-5">
-            <h1 class="mb-4">Carrito de compras</h1>
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead class="table-light">
-                        <tr>
-                            <th>Producto</th>
-                            <th>Precio</th>
-                            <th>Cantidad</th>
-                            <th>Total</th>
-                            <th>Eliminar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    <img src="../Imagenes/Acetaminofen.jpg" alt="Acetaminofén" width="64" height="64" class="me-3" />
-                                    <div>
-                                        <h5 class="mb-1">Acetaminofén</h5>
-                                        <p class="mb-0 text-muted">Alivio del dolor</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>COP 4.000</td>
-                            <td>
-                                <div class="input-group">
-                                    <button class="btn btn-outline-dark">-</button>
-                                    <input type="number" value="3" class="form-control text-center" style="width: 60px;" />
-                                    <button class="btn btn-outline-dark">+</button>
-                                </div>
-                            </td>
-                            <td>COP 12.000</td>
-                            <td>
-                                <button class="btn btn-outline-dark btn-sm">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                    </svg>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="row mt-4">
-                <div class="col-md-6">
-                    <div class="card summary-card">
-                        <div class="summary-card-header">
-                            <h2 class="card-title mb-0">Resumen de la compra</h2>
-                        </div>
-                        <div class="summary-card-body">
-                            <div class="d-flex justify-content-between summary-item">
-                                <span>Subtotal:</span>
-                                <span>COP 12.000</span>
-                            </div>
-                            <div class="d-flex justify-content-between summary-item">
-                                <span>Envío:</span>
-                                <span>COP 2.000</span>
-                            </div>
-                            <div class="d-flex justify-content-between summary-total">
-                                <span>Total:</span>
-                                <span>COP 14.000</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 d-flex align-items-center">
-                    <div class="d-flex flex-column w-100">
-                        <button class="btn btn-outline mb-2" id="btn1" style="width: 200px; height: 37px;">Seguir comprando</button>
-                        <button class="btn btn" id="btn2" style="width: 200px; height: 37px;">Proceder al pago</button>
-                    </div>
-                </div>
-            </div>
-        </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="/FarmaciaWeb/JS/scripts.js" type="text/javascript"></script>
     </body>
 </html>

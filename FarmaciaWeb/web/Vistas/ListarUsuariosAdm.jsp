@@ -1,6 +1,6 @@
 <%-- 
-    Document   : IndexAdmin
-    Created on : 20/08/2024, 10:44:21 AM
+    Document   : ListarUsuariosAdm
+    Created on : 26/08/2024, 10:48:52 AM
     Author     : SENA
 --%>
 
@@ -9,13 +9,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Index Admin</title>
-         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-         <link href="../CSS/IndexAdmin.css" rel="stylesheet" type="text/css"/>
-        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <title>Listar Usuarios</title>
+        <link href="/FarmaciaWeb/CSS/IndexAdmin.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <div class="container-fluid">
+         <div class="container-fluid">
         <div class="row">
             <div class="col-md-3 sidebar">
                 <div class="header d-flex justify-content-between align-items-center mb-3">
@@ -53,7 +54,7 @@
                             <a href="ListarProductoAdm.jsp" class="collapsible-link submenu-btn">Gestion de Productos</a>
                             <a href="#" class="collapsible-link submenu-btn">..</a>
                             <a href="#" class="collapsible-link submenu-btn">PQR</a>
-                            <a href="#" class="collapsible-link submenu-btn">Productos Disponibles</a>
+                            <a href="#" class="collapsible-link submenu-btn">..</a>
                         </div>
                     </div>
                 </nav>
@@ -88,28 +89,56 @@
                     </div>
                 </header>
                 <main class="main">
-                    <h1>Panel de Administración</h1>
-                    <div class="table-container">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Producto</th>
-                                    <th>Disponibilidad</th>
-                                    <th>Vendidos</th>
-                                    <th>Estado</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Paracetamol</td>
-                                    <td>50</td>
-                                    <td>12</td>
-                                    <td>En stock</td>
-                                </tr>
-                                <!-- Más filas aquí -->
-                            </tbody>
-                        </table>
-                    </div>
+                     <div class="container mt-5 border" style="border-radius: 15px">
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <form class="form-inline mt-4" action="">
+                        <div class="form-group mx-sm-3 mb-2">
+                            <input type="text" class="form-control" name="txtbuscar" placeholder="digite nombre">
+                        </div>
+                        <button type="submit" class="btn btn-success mb-2" name="accion" value="buscar"  style="background: #74BD64"><i class="bi bi-search"></i> Buscar</button>
+                    </form>
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead class="thead-light border">
+                    <tr table-success>
+                        <th scope="col" colspan="7" class="text-center border">USUARIOS DE LA FARMACIA</th>
+                        <th scope="col" class="text-center border"><a class="btn btn-primary ml-2" href=""  style="background: #74BD64"><i class="bi bi-person-add"></i></a></th>
+                    </tr>
+                    <tr>
+                        <th scope="col" class="text-center border">Id</th>
+                        <th scope="col" class="text-center border">Nombre</th>
+                        <th scope="col" class="text-center border">Apellido</th>
+                        <th scope="col" class="text-center border">Direccion</th>
+                        <th scope="col" class="text-center border">Telefono</th>
+                        <th scope="col" class="text-center border">Usuario</th>
+                        <th scope="col" class="text-center border">Tipo</th>
+                        <th scope="col" class="text-center border">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach var="usu" items="">  
+                    <tr>
+                        <th scope="row" class="border"></th>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class="border"></td>
+                        <td class=" text-center border">
+                            <input type="hidden" name="id" id="id" value="">
+                            <a class="btn btn-warning" href=""><i class="bi bi-pencil-fill"></i></a>
+                            <a class="btn btn-danger" id="btneliminar" href="#"><i class="bi bi-trash-fill"></i></i></a>
+                        </td>
+                    </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+        </div>
                 </main>
             </div>
         </div>

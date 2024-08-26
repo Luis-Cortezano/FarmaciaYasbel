@@ -13,7 +13,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <title>Listar Productos</title>
-        <link href="../CSS/IndexAdmin.css" rel="stylesheet" type="text/css"/>
+        <link href="/FarmaciaWeb/CSS/IndexAdmin.css" rel="stylesheet" type="text/css"/>
     </head>
     <%
         /* if (session.getAttribute("log") == null || session.getAttribute("log").equals('0')){

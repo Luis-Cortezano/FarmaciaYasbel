@@ -51,8 +51,8 @@
                             <a href="GestionPedidoAdm.jsp" class="collapsible-link submenu-btn">Procesamiento de Pedidos</a>
                             <a href="#" class="collapsible-link submenu-btn">Gestión de Clientes</a>
                             <a href="ListarProductoAdm.jsp" class="collapsible-link submenu-btn">Gestion de Productos</a>
-                            <a href="#" class="collapsible-link submenu-btn">Sistema de Pagos y Facturación</a>
-                            <a href="#" class="collapsible-link submenu-btn">Análisis y Estadísticas</a>
+                            <a href="#" class="collapsible-link submenu-btn">..</a>
+                            <a href="#" class="collapsible-link submenu-btn">PQR</a>
                             <a href="#" class="collapsible-link submenu-btn">Productos Disponibles</a>
                         </div>
                     </div>

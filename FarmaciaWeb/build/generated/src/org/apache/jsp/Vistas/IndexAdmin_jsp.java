@@ -90,8 +90,8 @@ public final class IndexAdmin_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <a href=\"GestionPedidoAdm.jsp\" class=\"collapsible-link submenu-btn\">Procesamiento de Pedidos</a>\r\n");
       out.write("                            <a href=\"#\" class=\"collapsible-link submenu-btn\">Gestión de Clientes</a>\r\n");
       out.write("                            <a href=\"ListarProductoAdm.jsp\" class=\"collapsible-link submenu-btn\">Gestion de Productos</a>\r\n");
-      out.write("                            <a href=\"#\" class=\"collapsible-link submenu-btn\">Sistema de Pagos y Facturación</a>\r\n");
-      out.write("                            <a href=\"#\" class=\"collapsible-link submenu-btn\">Análisis y Estadísticas</a>\r\n");
+      out.write("                            <a href=\"#\" class=\"collapsible-link submenu-btn\">..</a>\r\n");
+      out.write("                            <a href=\"#\" class=\"collapsible-link submenu-btn\">PQR</a>\r\n");
       out.write("                            <a href=\"#\" class=\"collapsible-link submenu-btn\">Productos Disponibles</a>\r\n");
       out.write("                        </div>\r\n");
       out.write("                    </div>\r\n");
@@ -121,7 +121,6 @@ public final class IndexAdmin_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        </button>\r\n");
       out.write("                        <div class=\"user-menu-content\">\r\n");
       out.write("                            <div class=\"user-menu-label\">Mi Cuenta</div>\r\n");
-      out.write("                            <div class=\"user-menu-separator\"></div>\r\n");
       out.write("                            <div class=\"user-menu-separator\"></div>\r\n");
       out.write("                            <a href=\"#\" class=\"user-menu-item\">Cerrar sesión</a>\r\n");
       out.write("                        </div>\r\n");

@@ -28,7 +28,7 @@
 
                     <form action="/FarmaciaWeb/CtrValidarInfo" id="form_input" method="post">
                         <div class="type">
-                            <input type="text" placeholder="Correo Electronico" id="email" name="txtusu">
+                            <input type="text" placeholder="Usuario" id="email" name="txtusu">
                         </div>
                         <div class="type">
                             <input type="password" placeholder="Contraseña" id="password" name="txtpass">

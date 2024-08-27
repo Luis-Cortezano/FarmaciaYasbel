@@ -20,7 +20,7 @@
         <script src="/FarmaciaWeb/JS/scripts.js" type="text/javascript"></script>
     </head>
     <%
-        
+       
        if (session.getAttribute("log") == null || session.getAttribute("log").equals('0')) {
            response.sendRedirect("../Vistas/LogginPage.jsp");
        }

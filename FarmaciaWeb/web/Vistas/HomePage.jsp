@@ -39,14 +39,7 @@
                     <input class="form-control mr-sm-2" type="search" placeholder="Buscar productos..." aria-label="Search" name="busqueda">
                     <button class="btn-search my-2 my-sm-0" type="submit">
                         <div class="original">BUSCAR</div>
-                        <div class="letters">
-                            <span>B</span>
-                            <span>U</span>
-                            <span>S</span>
-                            <span>C</span>
-                            <span>A</span>
-                            <span>R</span>
-                        </div>
+                        
                     </button>
                 </form>
 

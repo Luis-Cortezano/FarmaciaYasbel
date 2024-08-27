@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
         <link href="/FarmaciaWeb/CSS/style.css" rel="stylesheet" type="text/css"/>
-        
+        <link href="/FarmaciaWeb/CSS/carritocliente.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
          <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
@@ -104,7 +104,9 @@
                             <img src="${car.getFoto()}" alt="Producto 1" class="product-img" style="height: 200px ; width: 200px;">
                             <div class="product-details">
                                 <h3 class="product-name">${car.getNombre()}</h3>
-                                <p class="product-price"></p>
+                                <p class="product-price">${car.getPreciocompra()}</p>
+                                <p class="product-name">${car.getDescripcion()}</p>
+                                <p class="product-name">${car.getCantidad()}</p>
                                 <input type="hidden" id="idp" value="${car.getIdproducto()}">
                             </div>
                         </div>

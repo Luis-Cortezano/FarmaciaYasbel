@@ -73,7 +73,7 @@ String Mensaje = "";
       out.write("\r\n");
       out.write("                    <form action=\"/FarmaciaWeb/CtrValidarInfo\" id=\"form_input\" method=\"post\">\r\n");
       out.write("                        <div class=\"type\">\r\n");
-      out.write("                            <input type=\"text\" placeholder=\"Correo Electronico\" id=\"email\" name=\"txtusu\">\r\n");
+      out.write("                            <input type=\"text\" placeholder=\"Usuario\" id=\"email\" name=\"txtusu\">\r\n");
       out.write("                        </div>\r\n");
       out.write("                        <div class=\"type\">\r\n");
       out.write("                            <input type=\"password\" placeholder=\"Contraseña\" id=\"password\" name=\"txtpass\">\r\n");

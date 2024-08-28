@@ -41,12 +41,12 @@ public class CtrProductoLi extends HttpServlet {
      */
     ProductoDAO pdao = new ProductoDAO();
     CategoriaDAO cdao = new CategoriaDAO();
-    
+
     List<Producto> productos = new ArrayList();
     List<CategoriaDAO> categoria = new ArrayList();
     List<Carrito> listacarrito = new ArrayList();
     Usuario us;
-   
+
     int cantidad;
     Carrito car;
     int idp;
@@ -79,7 +79,7 @@ public class CtrProductoLi extends HttpServlet {
                 if (sesion.getAttribute("tipo") != null) {
                     if (sesion.getAttribute("tipo").equals("Administrador")) {
                         System.out.println("entro en administador");
-                        request.getRequestDispatcher("Vistas/HomePage.jsp").forward(request, response);
+                        request.getRequestDispatcher("Vistas/HomePageAdm.jsp").forward(request, response);
                     } else {
                         if (sesion.getAttribute("tipo").equals("Cliente")) {
                             request.getRequestDispatcher("Vistas/HomePage.jsp").forward(request, response);
@@ -118,7 +118,7 @@ public class CtrProductoLi extends HttpServlet {
                 sesion.invalidate();
                 response.sendRedirect("/FarmaciaWeb/Vistas/LogginPage.jsp");
                 break;
-            
+
             case "AgregarCarrito":
                 cantidad = 1;
                 int pos = 0;
@@ -217,9 +217,80 @@ public class CtrProductoLi extends HttpServlet {
                     request.getRequestDispatcher("Vistas/CarritoCliente.jsp").forward(request, response);
                 }
                 break;
-                
+            case "admi":
+                request.setAttribute("categorias", categoria);
+                request.setAttribute("productos", productos);
+                if (sesion.getAttribute("tipo") != null) {
+                    if (sesion.getAttribute("tipo").equals("Administrador")) {
+                        request.getRequestDispatcher("Vistas/IndexAdmin.jsp").forward(request, response);
+                    }
+                } else {
+                    request.getRequestDispatcher("/FarmaciaWeb/CtrProductoLi?accion=home").forward(request, response);
+                }
+                break;
+            case "Listaradm":
+                request.setAttribute("productos", productos);
+                request.getRequestDispatcher("Vistas/ListarProductoAdm.jsp").forward(request, response);
+                break;
+            case "EditarPro":
+                int idp = Integer.parseInt(request.getParameter("idpro"));
+                p = pdao.listaridp(idp);
+                request.setAttribute("Productoe", p);
+                request.setAttribute("editarPro", true);
+                productos = pdao.listarT();
+                request.setAttribute("producto", productos);
+                request.setAttribute("categorias", categoria);
+                request.getRequestDispatcher("/Vistas/ListarProductosAdm.jsp").forward(request, response);
+                break;
+            case "actualizarpro":
+                int idprodu = Integer.parseInt(request.getParameter("txtid"));
+                String nompro = request.getParameter("txtnombre");
+                int prepro = Integer.parseInt(request.getParameter("txtprecio"));
+                String despro = request.getParameter("txtdescripcion");
+                int stopro = Integer.parseInt(request.getParameter("txtstock"));
+                int catpro = Integer.parseInt(request.getParameter("cat"));
+                String fotpro = request.getParameter("foto2");
+                p.setProCodigo(idprodu);
+                p.setProPrecio(prepro);
+                p.setProNombre(nompro);
+                p.setProFoto(fotpro);
+                p.setProDescripcion(despro);
+                p.setProStok(stopro);
+                p.setTblCategoria(catpro);
+                pdao.editar(p);
+                request.getRequestDispatcher("CtrProducto?accion=listar").forward(request, response);
+                break;
+            case "Agregar":
+                System.out.println("entro Agregar AppWeb");
+                nom = request.getParameter("txtnombre");
+                System.out.println("nombre producto: " + nom);
+                des = request.getParameter("txtdescripcion");
+                pre = Integer.parseInt(request.getParameter("txtprecio"));
+                sto = Integer.parseInt(request.getParameter("txtstock"));
+                cat = Integer.parseInt(request.getParameter("categoria"));
+                System.out.println("categoria producto: " + cat);
+                foto = "Imagenes/" + request.getParameter("foto");
+                p.setProNombre(nom);
+                p.setProDescripcion(des);
+                p.setProPrecio(pre);
+                p.setProStok(sto);
+                p.setTblCategoria(cat);
+                p.setProFoto(foto);
+                pdao.crear(p);
+                request.getRequestDispatcher("CtrProductoLi?accion=listar").forward(request, response);
+                break;
+            case "listar":
+                productos = pdao.listarT();
+                request.setAttribute("producto", productos);
+                request.setAttribute("categorias", categoria);
+                request.getRequestDispatcher("Vistas/IndexAdmin.jsp").forward(request, response);
+                break;
+            case "ag":
+                request.getRequestDispatcher("Vistas/AdminiatracionProductosAdm.jsp").forward(request, response);
+                break;
+
         }
-    
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

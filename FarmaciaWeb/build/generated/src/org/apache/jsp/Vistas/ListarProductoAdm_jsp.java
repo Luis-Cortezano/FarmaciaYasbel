@@ -11,10 +11,23 @@ public final class ListarProductoAdm_jsp extends org.apache.jasper.runtime.HttpJ
 
   private static java.util.List<String> _jspx_dependants;
 
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_if_test;
+
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
   public java.util.List<String> getDependants() {
     return _jspx_dependants;
+  }
+
+  public void _jspInit() {
+    _jspx_tagPool_c_forEach_var_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_c_if_test = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+  }
+
+  public void _jspDestroy() {
+    _jspx_tagPool_c_forEach_var_items.release();
+    _jspx_tagPool_c_if_test.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -52,13 +65,13 @@ public final class ListarProductoAdm_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("        <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css\" rel=\"stylesheet\" crossorigin=\"anonymous\">\r\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css\">\r\n");
       out.write("        <title>Listar Productos</title>\r\n");
-      out.write("        <link href=\"../CSS/IndexAdmin.css\" rel=\"stylesheet\" type=\"text/css\"/>\r\n");
+      out.write("        <link href=\"/FarmaciaWeb/CSS/IndexAdmin.css\" rel=\"stylesheet\" type=\"text/css\"/>\r\n");
       out.write("    </head>\r\n");
       out.write("    ");
 
-        /* if (session.getAttribute("log") == null || session.getAttribute("log").equals('0')){
-        response.sendRedirect("../Vistas/Loggin.jsp");
-    }*/
+        if (session.getAttribute("log") == null || session.getAttribute("log").equals('0')) {
+            response.sendRedirect("/FarmaciaWeb/Vistas/LogginPage.jsp");
+        }
     
       out.write("\r\n");
       out.write("\r\n");
@@ -84,14 +97,7 @@ public final class ListarProductoAdm_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("                        </button>\r\n");
       out.write("                    </div>\r\n");
       out.write("                    <nav class=\"nav\">\r\n");
-      out.write("                        <a href=\"#\" class=\"nav-link active\">\r\n");
-      out.write("                            <svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\r\n");
-      out.write("                            <path d=\"M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2\"/>\r\n");
-      out.write("                            <circle cx=\"12\" cy=\"7\" r=\"4\"/>\r\n");
-      out.write("                            </svg>\r\n");
-      out.write("                            Mi cuenta\r\n");
-      out.write("                        </a>\r\n");
-      out.write("                        <!-- Collapsible Section -->\r\n");
+      out.write("\r\n");
       out.write("                        <div class=\"collapsible\">\r\n");
       out.write("                            <button class=\"collapsible-trigger\">\r\n");
       out.write("                                Gestión de Productos\r\n");
@@ -105,8 +111,8 @@ public final class ListarProductoAdm_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("                                <a href=\"GestionPedidoAdm.jsp\" class=\"collapsible-link submenu-btn\">Procesamiento de Pedidos</a>\r\n");
       out.write("                                <a href=\"#\" class=\"collapsible-link submenu-btn\">Gestión de Clientes</a>\r\n");
       out.write("                                <a href=\"ListarProductoAdm.jsp\" class=\"collapsible-link submenu-btn\">Gestion de Productos</a>\r\n");
-      out.write("                                <a href=\"#\" class=\"collapsible-link submenu-btn\">Sistema de Pagos y Facturación</a>\r\n");
-      out.write("                                <a href=\"#\" class=\"collapsible-link submenu-btn\">Análisis y Estadísticas</a>\r\n");
+      out.write("                                <a href=\"#\" class=\"collapsible-link submenu-btn\">..</a>\r\n");
+      out.write("                                <a href=\"#\" class=\"collapsible-link submenu-btn\">PQR</a>\r\n");
       out.write("                                <a href=\"#\" class=\"collapsible-link submenu-btn\">Productos Disponibles</a>\r\n");
       out.write("                            </div>\r\n");
       out.write("                        </div>\r\n");
@@ -137,10 +143,8 @@ public final class ListarProductoAdm_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("                            <div class=\"user-menu-content\">\r\n");
       out.write("                                <div class=\"user-menu-label\">Mi Cuenta</div>\r\n");
       out.write("                                <div class=\"user-menu-separator\"></div>\r\n");
-      out.write("                                <a href=\"#\" class=\"user-menu-item\">Configuración</a>\r\n");
-      out.write("                                <a href=\"#\" class=\"user-menu-item\">Soporte</a>\r\n");
-      out.write("                                <div class=\"user-menu-separator\"></div>\r\n");
       out.write("                                <a href=\"#\" class=\"user-menu-item\">Cerrar sesión</a>\r\n");
+      out.write("\r\n");
       out.write("                            </div>\r\n");
       out.write("                        </div>\r\n");
       out.write("                    </header>\r\n");
@@ -154,7 +158,7 @@ public final class ListarProductoAdm_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("                                        <div class=\"form-group mx-sm-3 mb-2\">\r\n");
       out.write("                                            <button type=\"submit\" class=\"btn btn-secondary mb-2\" name=\"accion\" value=\"buscarn\" style=\"background: #74BD64\"><i class=\"bi bi-search\"></i> Buscar</button>\r\n");
       out.write("                                            <input type=\"text\" class=\"form-control\" name=\"txtbuscar\" placeholder=\"nombre del producto\">\r\n");
-      out.write("                                            \r\n");
+      out.write("\r\n");
       out.write("                                        </div>\r\n");
       out.write("                                    </form>\r\n");
       out.write("                                </div>\r\n");
@@ -162,7 +166,7 @@ public final class ListarProductoAdm_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("                            <table class=\"table table-bordered\">\r\n");
       out.write("                                <thead class=\"thead-light border\">\r\n");
       out.write("                                    <tr table-success>\r\n");
-      out.write("                                        <th scope=\"col\" class=\"text-center border\" width=\"110\"><a class=\"btn btn-success ml-2\" data-bs-toggle=\"modal\" data-bs-target=\"#agregarproducto\" style=\"background: #74BD64\"><i class=\"bi bi-database-fill-add\"></i></a></th>\r\n");
+      out.write("                                        <th scope=\"col\" class=\"text-center border\" width=\"110\"><a class=\"btn btn-success ml-2\" href=\"CtrProductoLi?accion=ag\" style=\"background: #74BD64\"><i class=\"bi bi-database-fill-add\"></i></a></th>\r\n");
       out.write("                                        <th scope=\"col\" colspan=\"7\" class=\"text-center border\">PRODUCTOS DE LA FARMACIA</th>\r\n");
       out.write("                                    </tr>\r\n");
       out.write("                                    <tr>\r\n");
@@ -177,109 +181,16 @@ public final class ListarProductoAdm_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("                                    </tr>\r\n");
       out.write("                                </thead>\r\n");
       out.write("                                <tbody>\r\n");
-      out.write("                                <c:forEach var=\"pro\" items=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${producto}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\">  \r\n");
-      out.write("                                    <tr>\r\n");
-      out.write("                                        <th scope=\"row\" class=\"border\">");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pro.getId()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("</th>\r\n");
-      out.write("                                        <td class=\"border\">");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pro.getNombre()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("</td>\r\n");
-      out.write("                                        <td class=\"border\"><img src=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pro.getFoto()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\" width=\"100\" height=\"80\"></td>\r\n");
-      out.write("                                        <td class=\"border\">");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pro.getDescripcion()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("</td>\r\n");
-      out.write("                                        <td class=\"border\">");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pro.getPrecio()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("</td>\r\n");
-      out.write("                                        <td class=\"border\">");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pro.getStok()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("</td>\r\n");
-      out.write("                                        <td class=\"border\">");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pro.getCategoria()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("</td>\r\n");
-      out.write("                                        <td scope=\"col\" class =\"text-center border\">\r\n");
-      out.write("                                            <input type=\"hidden\" name=\"id\" id=\"id\" value=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pro.getId()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\">\r\n");
-      out.write("                                            <a class=\"btn btn-warning\" href=\"/AppWeb/CtrProducto?accion=EditarPro&idpro=");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pro.getId()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\" data-bs-toggle=\"modal\" data-bs-target=\"#editarproducto\"><i class=\"bi bi-pencil-fill\"></i></a>\r\n");
-      out.write("                                            <a class=\"btn btn-danger\" id=\"btneliminar\" href=\"#\"><i class=\"bi bi-trash-fill\"></i></a>\r\n");
-      out.write("                                        </td>\r\n");
-      out.write("                                    </tr>\r\n");
-      out.write("                                </c:forEach>\r\n");
+      out.write("                                    ");
+      if (_jspx_meth_c_forEach_0(_jspx_page_context))
+        return;
+      out.write("\r\n");
       out.write("                                </tbody>\r\n");
       out.write("                            </table>\r\n");
       out.write("                        </div>\r\n");
       out.write("\r\n");
-      out.write("                        <!-- Modal -->\r\n");
-      out.write("                        <div class=\"modal fade\" id=\"agregarproducto\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\r\n");
-      out.write("                            <div class=\"modal-dialog\">\r\n");
-      out.write("                                <div class=\"modal-content\">\r\n");
-      out.write("                                    <div class=\"modal-header\">\r\n");
-      out.write("                                        <h1 class=\"modal-title fs-5\" id=\"exampleModalLabel\">Agregar Producto</h1>\r\n");
-      out.write("                                        <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>\r\n");
-      out.write("                                    </div>\r\n");
-      out.write("                                    <div class=\"modal-body\">\r\n");
-      out.write("                                        <form class=\"form-sing\" action=\"/AppWeb/CtrProducto?accion=Agregar\" method=\"POST\" >\r\n");
-      out.write("                                            <div class=\"form-row\">\r\n");
-      out.write("                                                <div class=\"col-6\">\r\n");
-      out.write("                                                    <label>Nombre</label> \r\n");
-      out.write("                                                    <input type=\"text\" class=\"form-control\" name=\"txtnombre\" placeholder=\"nombre\" required=\"\">\r\n");
-      out.write("                                                </div>  \r\n");
-      out.write("                                                <div class=\"col-6\">\r\n");
-      out.write("                                                    <label>Precio</label> \r\n");
-      out.write("                                                    <input type=\"number\" class=\"form-control\" name=\"txtprecio\" placeholder=\"precio\" required=\"\">\r\n");
-      out.write("                                                </div>\r\n");
-      out.write("                                                <div class=\"col-6\">\r\n");
-      out.write("                                                    <label>Descripcion</label> \r\n");
-      out.write("                                                    <input type=\"text\" class=\"form-control\" name=\"txtdescripcion\" placeholder=\"descripcion\" required=\"\">\r\n");
-      out.write("                                                </div>\r\n");
-      out.write("                                                <div class=\"col-6\">\r\n");
-      out.write("                                                    <label>Stock</label> \r\n");
-      out.write("                                                    <input type=\"number\" class=\"form-control\" name=\"txtstock\" placeholder=\"disponibilidad\" required=\"\">\r\n");
-      out.write("                                                </div>\r\n");
-      out.write("                                                <div class=\"col-6\">\r\n");
-      out.write("                                                    <label>Categoria</label> \r\n");
-      out.write("                                                    <select class=\"form-control\" name=\"categoria\">\r\n");
-      out.write("                                                        <c:forEach var=\"cat\" items=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${categorias}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\">\r\n");
-      out.write("                                                            <option value=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${cat.getId()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write('"');
-      out.write('>');
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${cat.getNombre()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("</option>\r\n");
-      out.write("                                                        </c:forEach>\r\n");
-      out.write("                                                    </select>\r\n");
-      out.write("                                                </div>\r\n");
-      out.write("                                                <div class=\"col-6\">\r\n");
-      out.write("                                                    <label>Imagen</label> \r\n");
-      out.write("                                                    <input type=\"file\" class=\"form-control\" name=\"foto\" id=\"foto\" required=\"\">\r\n");
-      out.write("                                                </div>\r\n");
-      out.write("                                            </div>    \r\n");
       out.write("\r\n");
-      out.write("                                            <center>\r\n");
-      out.write("                                                <button type=\"submit\" class=\"btn btn-primary mt-4 mb-2 formulario_btn\" name=\"btnagregar\" value=\"Agregar\">Agregar <i class=\"bi bi-floppy\"></i></button>\r\n");
-      out.write("                                                <a class=\"btn btn-danger formulario_btn mt-4 mb-2\" name=\"regresar\" href=\"#\">Regrsar <i class=\"bi bi-box-arrow-left\"></i></a>\r\n");
-      out.write("                                            </center>\r\n");
-      out.write("\r\n");
-      out.write("                                        </form>\r\n");
-      out.write("                                    </div>\r\n");
-      out.write("                                    <div class=\"modal-footer\">\r\n");
-      out.write("\r\n");
-      out.write("                                    </div>\r\n");
-      out.write("                                </div>\r\n");
-      out.write("                            </div>\r\n");
-      out.write("                        </div>\r\n");
-      out.write("\r\n");
-      out.write("                        <!-- Moda2 -->\r\n");
+      out.write("                        <!-- Moda1 -->\r\n");
       out.write("                        <div class=\"modal fade\" id=\"editarproducto\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\r\n");
       out.write("                            <div class=\"modal-dialog\">\r\n");
       out.write("                                <div class=\"modal-content\">\r\n");
@@ -292,44 +203,43 @@ public final class ListarProductoAdm_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("                                            <div class=\"form-row\">\r\n");
       out.write("                                                <div class=\"col-6\">\r\n");
       out.write("                                                    <label>Nombre</label> \r\n");
-      out.write("                                                    <input type=\"hidden\" class=\"form-control\" name=\"txtid\" id=\"txtid\" value=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${Productoe.getId()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\"> \r\n");
-      out.write("                                                    <input type=\"text\" class=\"form-control\" name=\"txtnombre\" value=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${Productoe.getNombre()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\" placeholder=\"nombre\" required=\"\">\r\n");
+      out.write("                                                    <input type=\"text\" class=\"form-control\" name=\"txtnombre\" placeholder=\"nombre\" required=\"\">\r\n");
       out.write("                                                </div>  \r\n");
       out.write("                                                <div class=\"col-6\">\r\n");
+      out.write("                                                    <label>Proveedores</label> \r\n");
+      out.write("                                                    <input type=\"text\" class=\"form-control\" name=\"txtproveedore\" placeholder=\"proveedores\" required=\"\">\r\n");
+      out.write("                                                </div>\r\n");
+      out.write("                                                <div class=\"col-6\">\r\n");
       out.write("                                                    <label>Precio</label> \r\n");
-      out.write("                                                    <input type=\"number\" class=\"form-control\" name=\"txtprecio\" value=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${Productoe.getPrecio()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\" placeholder=\"precio\" required=\"\">\r\n");
+      out.write("                                                    <input type=\"number\" class=\"form-control\" name=\"txtprecio\" placeholder=\"precio\" required=\"\">\r\n");
+      out.write("                                                </div>\r\n");
+      out.write("                                                <div class=\"col-6\">\r\n");
+      out.write("                                                    <label>Descuento</label> \r\n");
+      out.write("                                                    <input type=\"number\" class=\"form-control\" name=\"txtdescuento\" placeholder=\"descuento\" required=\"\">\r\n");
+      out.write("                                                </div>\r\n");
+      out.write("                                                <div class=\"col-6\">\r\n");
+      out.write("                                                    <label>Marca</label> \r\n");
+      out.write("                                                    <input type=\"text\" class=\"form-control\" name=\"txtmarca\" placeholder=\"marca\" required=\"\">\r\n");
       out.write("                                                </div>\r\n");
       out.write("                                                <div class=\"col-6\">\r\n");
       out.write("                                                    <label>Descripcion</label> \r\n");
-      out.write("                                                    <input type=\"text\" class=\"form-control\" name=\"txtdescripcion\" value=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${Productoe.getDescripcion()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\" placeholder=\"descripcion\" required=\"\">\r\n");
+      out.write("                                                    <input type=\"number\" class=\"form-control\" name=\"txtdescripcion\" placeholder=\"descripcion\" required=\"\">\r\n");
+      out.write("                                                </div>\r\n");
+      out.write("                                                <div class=\"col-6\">\r\n");
+      out.write("                                                    <label>Fecha vencimiento</label> \r\n");
+      out.write("                                                    <input type=\"date\" class=\"form-control\" name=\"txtfechavencimiento\" placeholder=\"fecha\" required=\"\">\r\n");
       out.write("                                                </div>\r\n");
       out.write("                                                <div class=\"col-6\">\r\n");
       out.write("                                                    <label>Stock</label> \r\n");
-      out.write("                                                    <input type=\"number\" class=\"form-control\" value=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${Productoe.getStok()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\" name=\"txtstock\" placeholder=\"disponibilidad\" required=\"\">\r\n");
+      out.write("                                                    <input type=\"number\" class=\"form-control\" name=\"txtstock\" placeholder=\"stock\" required=\"\">\r\n");
       out.write("                                                </div>\r\n");
       out.write("                                                <div class=\"col-6\">\r\n");
       out.write("                                                    <label>Categoria</label> \r\n");
       out.write("                                                    <select class=\"form-control\" name=\"categoria\" onchange=\"actualizarInputOculto(this)\">\r\n");
-      out.write("                                                        <c:forEach var=\"cat\" items=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${categorias}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\">\r\n");
-      out.write("                                                            <option value=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${cat.getId()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write('"');
-      out.write('>');
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${cat.getNombre()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("</option>\r\n");
-      out.write("                                                        </c:forEach>\r\n");
+      out.write("                                                        ");
+      if (_jspx_meth_c_forEach_1(_jspx_page_context))
+        return;
+      out.write("\r\n");
       out.write("                                                    </select>\r\n");
       out.write("                                                    <input type=\"hidden\" class=\"form-control\" name=\"cat\" id=\"cat\" value=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${Productoe.getCategoria()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
@@ -383,18 +293,16 @@ public final class ListarProductoAdm_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("        <script src=\"https://unpkg.com/sweetalert/dist/sweetalert.min.js\"></script>\r\n");
       out.write("        <script src=\"../JS/IndexAdmin.js\" type=\"text/javascript\"></script>\r\n");
       out.write("        <script src=\"/AppWeb/JS/Funciones3.js\" type=\"text/javascript\"></script>\r\n");
+      out.write("        <script src=\"/FarmaciaWeb/JS/IndexAdmin.js\" type=\"text/javascript\"></script>\r\n");
       out.write("        <script>\r\n");
-      out.write("                                            $(document).ready(function () {\r\n");
+      out.write("        $(document).ready(function () {\r\n");
+      out.write("            ");
+      if (_jspx_meth_c_if_0(_jspx_page_context))
+        return;
       out.write("\r\n");
-      out.write("            <c:if test=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${editarPro}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\">\r\n");
-      out.write("            $('#editarproducto').modal('show');\r\n");
-      out.write("        </c:if>\r\n");
-      out.write("\r\n");
-      out.write("                                            });\r\n");
-      out.write("    </script>\r\n");
-      out.write("</body>\r\n");
+      out.write("         });\r\n");
+      out.write("        </script>\r\n");
+      out.write("    </body>\r\n");
       out.write("</html>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
@@ -407,5 +315,143 @@ public final class ListarProductoAdm_jsp extends org.apache.jasper.runtime.HttpJ
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
+  }
+
+  private boolean _jspx_meth_c_forEach_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_0.setParent(null);
+    _jspx_th_c_forEach_0.setVar("prod");
+    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${productos}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
+      if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("  \r\n");
+          out.write("                                        <tr>\r\n");
+          out.write("                                            <th scope=\"row\" class=\"border\">");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getProCodigo()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</th>\r\n");
+          out.write("                                            <td class=\"border\">");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getProNombre()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</td>\r\n");
+          out.write("                                            <td class=\"border\"><img src=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getProFoto()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" width=\"100\" height=\"80\"></td>\r\n");
+          out.write("                                            <td class=\"border\">");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getProDescripcion()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</td>\r\n");
+          out.write("                                            <td class=\"border\">");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getProDescripcion()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</td>\r\n");
+          out.write("                                            <td class=\"border\">");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getProStok()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</td>\r\n");
+          out.write("                                            <td class=\"border\">");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getTblCategoria()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</td>\r\n");
+          out.write("                                            <td scope=\"col\" class =\"text-center border\">\r\n");
+          out.write("                                                <input type=\"hidden\" name=\"id\" id=\"id\" value=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getProCodigo()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\">\r\n");
+          out.write("                                                <a class=\"btn btn-warning\" href=\"/FarmaciaWeb/CtrProductoLi?accion=EditarPro&idpro=");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getProCodigo()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" data-bs-toggle=\"modal\" data-bs-target=\"#editarproducto\"><i class=\"bi bi-pencil-fill\"></i></a>\r\n");
+          out.write("                                                <a class=\"btn btn-danger\" id=\"btneliminar\" href=\"#\"><i class=\"bi bi-trash-fill\"></i></a>\r\n");
+          out.write("                                            </td>\r\n");
+          out.write("                                        </tr>\r\n");
+          out.write("                                    ");
+          int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_0[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_0.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_0.doFinally();
+      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_0);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_c_forEach_1(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_1.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_1.setParent(null);
+    _jspx_th_c_forEach_1.setVar("cat");
+    _jspx_th_c_forEach_1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${categorias}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int[] _jspx_push_body_count_c_forEach_1 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_1 = _jspx_th_c_forEach_1.doStartTag();
+      if (_jspx_eval_c_forEach_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\r\n");
+          out.write("                                                            <option value=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${cat.getId()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write('"');
+          out.write('>');
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${cat.getNombre()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</option>\r\n");
+          out.write("                                                        ");
+          int evalDoAfterBody = _jspx_th_c_forEach_1.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_1[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_1.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_1.doFinally();
+      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_1);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_c_if_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_if_0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _jspx_tagPool_c_if_test.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_if_0.setPageContext(_jspx_page_context);
+    _jspx_th_c_if_0.setParent(null);
+    _jspx_th_c_if_0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${editarPro}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
+    int _jspx_eval_c_if_0 = _jspx_th_c_if_0.doStartTag();
+    if (_jspx_eval_c_if_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("        $('#editarproducto').modal('show');\r\n");
+        out.write("            ");
+        int evalDoAfterBody = _jspx_th_c_if_0.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_if_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_0);
+      return true;
+    }
+    _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_0);
+    return false;
   }
 }

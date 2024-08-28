@@ -11,10 +11,20 @@ public final class IndexAdmin_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   private static java.util.List<String> _jspx_dependants;
 
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
+
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
   public java.util.List<String> getDependants() {
     return _jspx_dependants;
+  }
+
+  public void _jspInit() {
+    _jspx_tagPool_c_forEach_var_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+  }
+
+  public void _jspDestroy() {
+    _jspx_tagPool_c_forEach_var_items.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -50,7 +60,7 @@ public final class IndexAdmin_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
       out.write("        <title>Index Admin</title>\r\n");
       out.write("         <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\">\r\n");
-      out.write("         <link href=\"../CSS/IndexAdmin.css\" rel=\"stylesheet\" type=\"text/css\"/>\r\n");
+      out.write("         <link href=\"/FarmaciaWeb/CSS/IndexAdmin.css\" rel=\"stylesheet\" type=\"text/css\"/>\r\n");
       out.write("        \r\n");
       out.write("    </head>\r\n");
       out.write("    <body>\r\n");
@@ -89,7 +99,7 @@ public final class IndexAdmin_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <a href=\"IndexAdmin.jsp\" class=\"collapsible-link submenu-btn\">Inventario</a>\r\n");
       out.write("                            <a href=\"GestionPedidoAdm.jsp\" class=\"collapsible-link submenu-btn\">Procesamiento de Pedidos</a>\r\n");
       out.write("                            <a href=\"#\" class=\"collapsible-link submenu-btn\">Gestión de Clientes</a>\r\n");
-      out.write("                            <a href=\"ListarProductoAdm.jsp\" class=\"collapsible-link submenu-btn\">Gestion de Productos</a>\r\n");
+      out.write("                            <a href=\"/FarmaciaWeb/CtrProductoLi?accion=listaradm\" class=\"collapsible-link submenu-btn\">Gestion de Productos</a>\r\n");
       out.write("                            <a href=\"#\" class=\"collapsible-link submenu-btn\">..</a>\r\n");
       out.write("                            <a href=\"#\" class=\"collapsible-link submenu-btn\">PQR</a>\r\n");
       out.write("                            <a href=\"#\" class=\"collapsible-link submenu-btn\">Productos Disponibles</a>\r\n");
@@ -139,14 +149,12 @@ public final class IndexAdmin_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                </tr>\r\n");
       out.write("                            </thead>\r\n");
       out.write("                            <tbody>\r\n");
-      out.write("                                <tr>\r\n");
-      out.write("                                    <td>Paracetamol</td>\r\n");
-      out.write("                                    <td>50</td>\r\n");
-      out.write("                                    <td>12</td>\r\n");
-      out.write("                                    <td>En stock</td>\r\n");
-      out.write("                                </tr>\r\n");
-      out.write("                                <!-- Más filas aquí -->\r\n");
+      out.write("                                ");
+      if (_jspx_meth_c_forEach_0(_jspx_page_context))
+        return;
+      out.write(" \r\n");
       out.write("                            </tbody>\r\n");
+      out.write("                            \r\n");
       out.write("                        </table>\r\n");
       out.write("                    </div>\r\n");
       out.write("                </main>\r\n");
@@ -157,7 +165,7 @@ public final class IndexAdmin_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\"></script>\r\n");
       out.write("    <script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js\"></script>\r\n");
       out.write("    <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>\r\n");
-      out.write("    <script src=\"../JS/IndexAdmin.js\" type=\"text/javascript\"></script>\r\n");
+      out.write("    <script src=\"/FarmaciaWeb/JS/IndexAdmin.js\" type=\"text/javascript\"></script>\r\n");
       out.write("    </body>\r\n");
       out.write("</html>\r\n");
     } catch (Throwable t) {
@@ -171,5 +179,51 @@ public final class IndexAdmin_jsp extends org.apache.jasper.runtime.HttpJspBase
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
+  }
+
+  private boolean _jspx_meth_c_forEach_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_0.setParent(null);
+    _jspx_th_c_forEach_0.setVar("prod");
+    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${productos}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
+      if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\r\n");
+          out.write("                                <tr>\r\n");
+          out.write("                                    <td>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getProNombre()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</td>\r\n");
+          out.write("                                    <td>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${prod.getProStok()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</td>\r\n");
+          out.write("                                    <td>12</td>\r\n");
+          out.write("                                    <td>En stock</td>\r\n");
+          out.write("                                </tr>\r\n");
+          out.write("                            ");
+          int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_0[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_0.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_0.doFinally();
+      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_0);
+    }
+    return false;
   }
 }

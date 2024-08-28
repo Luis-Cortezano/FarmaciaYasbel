@@ -3,7 +3,7 @@
     Created on : 20/08/2024, 10:44:21 AM
     Author     : SENA
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Index Admin</title>
          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-         <link href="../CSS/IndexAdmin.css" rel="stylesheet" type="text/css"/>
+         <link href="/FarmaciaWeb/CSS/IndexAdmin.css" rel="stylesheet" type="text/css"/>
         
     </head>
     <body>
@@ -50,7 +50,7 @@
                             <a href="IndexAdmin.jsp" class="collapsible-link submenu-btn">Inventario</a>
                             <a href="GestionPedidoAdm.jsp" class="collapsible-link submenu-btn">Procesamiento de Pedidos</a>
                             <a href="#" class="collapsible-link submenu-btn">Gestión de Clientes</a>
-                            <a href="ListarProductoAdm.jsp" class="collapsible-link submenu-btn">Gestion de Productos</a>
+                            <a href="/FarmaciaWeb/CtrProductoLi?accion=Listaradm" class="collapsible-link submenu-btn">Gestion de Productos</a>
                             <a href="#" class="collapsible-link submenu-btn">..</a>
                             <a href="#" class="collapsible-link submenu-btn">PQR</a>
                             <a href="#" class="collapsible-link submenu-btn">Productos Disponibles</a>
@@ -100,14 +100,16 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <c:forEach var="prod" items="${productos}">
                                 <tr>
-                                    <td>Paracetamol</td>
-                                    <td>50</td>
+                                    <td>${prod.getProNombre()}</td>
+                                    <td>${prod.getProStok()}</td>
                                     <td>12</td>
                                     <td>En stock</td>
                                 </tr>
-                                <!-- Más filas aquí -->
+                            </c:forEach> 
                             </tbody>
+                            
                         </table>
                     </div>
                 </main>
@@ -118,6 +120,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="../JS/IndexAdmin.js" type="text/javascript"></script>
+    <script src="/FarmaciaWeb/JS/IndexAdmin.js" type="text/javascript"></script>
     </body>
 </html>
